@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
   variant?: "default" | "light";
@@ -42,25 +43,28 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
               Harry Barnish
             </motion.div>
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <motion.div
-                  whileHover={{ y: -1 }}
-                  className={`cursor-pointer transition-colors font-merriweather ${
-                    isActive(item.href)
-                      ? variant === "light"
-                        ? "text-blue-600 font-semibold"
-                        : "text-primary font-semibold"
-                      : variant === "light"
-                        ? "text-gray-600 hover:text-gray-900"
-                        : "text-foreground/70 hover:text-foreground"
-                  }`}
-                >
-                  {item.name}
-                </motion.div>
-              </Link>
-            ))}
+          <div className="flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <Link key={item.name} href={item.href}>
+                  <motion.div
+                    whileHover={{ y: -1 }}
+                    className={`cursor-pointer transition-colors font-merriweather ${
+                      isActive(item.href)
+                        ? variant === "light"
+                          ? "text-blue-600 font-semibold"
+                          : "text-primary font-semibold"
+                        : variant === "light"
+                          ? "text-gray-600 hover:text-gray-900"
+                          : "text-foreground/70 hover:text-foreground"
+                    }`}
+                  >
+                    {item.name}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+            <ThemeToggle />
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Merriweather } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -42,7 +43,9 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${merriweather.variable} antialiased bg-background text-foreground`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

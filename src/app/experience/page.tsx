@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Calendar, MapPin, ExternalLink, Building2, Users, Heart } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ThemeAwareLogo from "@/components/ThemeAwareLogo";
 
 export default function Experience() {
   const containerVariants = {
@@ -77,7 +78,8 @@ export default function Experience() {
     previousEmployment: [
       {
         company: "CyanoCapture",
-        logo: "/logos/cyanocapture_logo.png",
+        logo: "/logos/cyanocapture_light_logo.png",
+        darkLogo: "/logos/cyanocapture_dark_logo.png",
         period: "Jan 2023 - Aug 2024",
         type: "Full-Time",
         companyDescription: "A pioneering climate tech company that won Elon Musk's XPRIZE 2021 and Shell New Energy Challenge 2023 for their revolutionary photosynthetic biomanufacturing platform. CyanoCapture uses genetically engineered cyanobacteria to synthesize high-value compounds directly from CO2 and sunlight.",
@@ -312,13 +314,24 @@ export default function Experience() {
                         <div className="flex items-center">
                           {role.logo.endsWith('.png') || role.logo.endsWith('.jpeg') || role.logo.endsWith('.jpg') ? (
                             <div className="w-12 h-12 mr-3 relative flex-shrink-0 rounded-lg overflow-hidden">
-                              <Image
-                                src={role.logo}
-                                alt={`${role.company} logo`}
-                                fill
-                                className="object-contain"
-                                sizes="48px"
-                              />
+                              {role.company === "CyanoCapture" && role.darkLogo ? (
+                                <ThemeAwareLogo
+                                  lightSrc={role.logo}
+                                  darkSrc={role.darkLogo}
+                                  alt={`${role.company} logo`}
+                                  width={48}
+                                  height={48}
+                                  className="object-contain"
+                                />
+                              ) : (
+                                <Image
+                                  src={role.logo}
+                                  alt={`${role.company} logo`}
+                                  fill
+                                  className="object-contain"
+                                  sizes="48px"
+                                />
+                              )}
                             </div>
                           ) : (
                             <span className="text-2xl mr-3">{role.logo}</span>
