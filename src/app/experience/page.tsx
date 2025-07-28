@@ -7,6 +7,50 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ThemeAwareLogo from "@/components/ThemeAwareLogo";
 
+// TypeScript interfaces for experience data
+interface Position {
+  role: string;
+  period: string;
+  description: string;
+  technologies?: string[];
+}
+
+interface BaseRole {
+  company: string;
+  logo: string;
+  darkLogo?: string;
+  period: string;
+  type: string;
+  companyDescription?: string;
+  link?: string;
+}
+
+interface SingleRole extends BaseRole {
+  role: string;
+  description: string;
+  technologies?: string[];
+}
+
+interface MultiPositionRole extends BaseRole {
+  positions: Position[];
+}
+
+type ExperienceRole = SingleRole | MultiPositionRole;
+
+interface VolunteerRole {
+  organization: string;
+  logo: string;
+  role: string;
+  period: string;
+  description?: string;
+}
+
+interface ExperienceData {
+  currentRoles: ExperienceRole[];
+  previousEmployment: ExperienceRole[];
+  volunteering: VolunteerRole[];
+}
+
 export default function Experience() {
   const containerVariants = {
     hidden: { opacity: 0.8 },
@@ -30,7 +74,12 @@ export default function Experience() {
     },
   };
 
-  const experienceData = {
+  // Type guard to check if role has positions
+  const hasPositions = (role: ExperienceRole): role is MultiPositionRole => {
+    return 'positions' in role;
+  };
+
+  const experienceData: ExperienceData = {
     currentRoles: [
       {
         company: "Queen Mary University of London",
@@ -219,7 +268,7 @@ export default function Experience() {
                       )}
 
                       {/* Positions */}
-                      {'positions' in role ? (
+                      {hasPositions(role) ? (
                         <div className="space-y-4">
                           {role.positions?.map((position, posIndex) => (
                             <div key={posIndex} className="border-l-2 border-primary/20 pl-4">
@@ -355,7 +404,7 @@ export default function Experience() {
                       )}
 
                       {/* Positions */}
-                      {'positions' in role ? (
+                      {hasPositions(role) ? (
                         <div className="space-y-4">
                           {role.positions?.map((position, posIndex) => (
                             <div key={posIndex} className="border-l-2 border-primary/20 pl-4">
