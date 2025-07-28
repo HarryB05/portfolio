@@ -1,102 +1,161 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: Github,
+      href: "https://github.com/yourusername",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://linkedin.com/in/yourusername",
+    },
+    {
+      name: "Email",
+      icon: Mail,
+      href: "mailto:your.email@example.com",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Simple Navigation */}
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm"
+      >
+        <div className="w-full py-6 px-6">
+          <div className="flex items-center justify-between">
+            <Link href="/">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold text-primary font-playfair cursor-pointer"
+              >
+                Harry Barnish
+              </motion.div>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8">
+              {[
+                { name: "Home", href: "/" },
+                { name: "Experience", href: "/experience" },
+                { name: "Projects", href: "/projects" },
+                { name: "Tech Stack", href: "/tech-stack" }
+              ].map((item) => (
+                <Link key={item.name} href={item.href}>
+                  <motion.div
+                    whileHover={{ y: -1 }}
+                    className="text-foreground/70 hover:text-foreground cursor-pointer transition-colors font-merriweather"
+                  >
+                    {item.name}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
+      </motion.nav>
+
+      {/* Main Content */}
+      <main className="flex items-center justify-center min-h-screen px-6 pb-20">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-3xl mx-auto text-center"
+        >
+          {/* Hero Section */}
+          <motion.div variants={itemVariants} className="mb-12">
+            <motion.h1
+              className="text-6xl md:text-8xl font-bold mb-8 text-foreground font-playfair"
+            >
+              Hi, I'm Harry
+            </motion.h1>
+            
+            <motion.p
+              className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed font-merriweather"
+            >
+              Computer Science student passionate about building innovative solutions and creating impactful projects.
+            </motion.p>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          >
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 transition-colors font-merriweather"
+            >
+              View Projects
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="border border-primary/30 text-primary px-8 py-4 rounded-lg font-medium hover:bg-primary/10 transition-colors font-merriweather"
+            >
+              Tech Stack
+            </motion.button>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center items-center gap-2"
+          >
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 text-foreground/70"
+                title={social.name}
+              >
+                <social.icon className="w-6 h-6" />
+              </a>
+            ))}
+          </motion.div>
+        </motion.div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="w-full py-4 text-center bg-background/90 backdrop-blur-sm border-t border-border/20">
+        <p className="text-foreground/60 text-sm font-merriweather">
+          Built by Harry Barnish
+        </p>
       </footer>
     </div>
   );
