@@ -1,0 +1,272 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Github, ExternalLink, Play } from "lucide-react";
+import Link from "next/link";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
+interface Project {
+  id: string;
+  title: string;
+  period: string;
+  description: string;
+  technologies: string[];
+  links?: {
+    github?: string;
+    website?: string;
+    play?: string;
+  };
+  status: "current" | "past";
+}
+
+export default function Projects() {
+  const projects: Project[] = [
+    {
+      id: "lucidtrack",
+      title: "LucidTrack",
+      period: "05/2024 - Present",
+      description: "LucidTrack is a modern web application designed to streamline the management of internship applications and their outcomes for students. It offers a customizable interface and gives a clear view into overall progress and performance of a students applications.",
+      technologies: ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
+      links: {
+        website: "https://lucidtrack.com"
+      },
+      status: "current"
+    },
+    {
+      id: "estate-management",
+      title: "Estate Management System",
+      period: "04/2024 - Present",
+      description: "EMS (Estate Management System) is an all-in-one platform centralising contact management, expense tracking, mileage and time logging, and estate inventory management. I made EMS to help my family manage their estate.",
+      technologies: ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
+      links: {
+        github: "https://github.com/harrybarnish/estate-management-system"
+      },
+      status: "current"
+    },
+    {
+      id: "student-welfare",
+      title: "Student Welfare System",
+      period: "05/2025 - Present",
+      description: "I am currently building a student welfare system for boarding school students.",
+      technologies: ["Supabase", "Next.js", "Tailwind CSS"],
+      status: "current"
+    },
+    {
+      id: "merkle-tree",
+      title: "Merkle Tree Implementation",
+      period: "03/2024",
+      description: "A Python implementation of a Merkle Tree for learning and experimentation.",
+      technologies: ["Python"],
+      links: {
+        github: "https://github.com/harrybarnish/merkle-tree"
+      },
+      status: "past"
+    },
+    {
+      id: "hyperloop-pod",
+      title: "Hyperloop Pod Communications System",
+      period: "09/2024 - 08/2025",
+      description: "Asynchronus python application to coordinate communication between ESP32s, Dashboard, FSM (Finite State Machine). Non-blocking architechture with priortiy-based messaging from API calls.",
+      technologies: ["Python", "FastAPI"],
+      status: "past"
+    },
+    {
+      id: "village-blast",
+      title: "Village Blaster",
+      period: "04/2025",
+      description: "A silly 3D game where cube people run for their lives while you practice your aim. Built with Cursor.",
+      technologies: ["Three.js", "JavaScript"],
+      links: {
+        github: "https://github.com/harrybarnish/village-blast",
+        play: "https://village-blast.vercel.app"
+      },
+      status: "past"
+    },
+    {
+      id: "horse-racing",
+      title: "Horse Racing Simulator",
+      period: "03/2025 - 04/2025",
+      description: "Designed and implemented a Java-based Horse Race Simulator. Featured multithreaded race execution for parallel processing and performance. Incorporated dynamic event handling to address real-time race conditions.",
+      technologies: ["Java", "Swing"],
+      links: {
+        github: "https://github.com/harrybarnish/horse-racing-simulator"
+      },
+      status: "past"
+    },
+    {
+      id: "portfolio",
+      title: "This Website",
+      period: "03/2023 - Present",
+      description: "My personal portfolio website showcasing my projects and experience.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      links: {
+        github: "https://github.com/harrybarnish/portfolio"
+      },
+      status: "past"
+    }
+  ];
+
+  const currentProjects = projects.filter(p => p.status === "current");
+  const pastProjects = projects.filter(p => p.status === "past");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const ProjectCard = ({ project }: { project: Project }) => (
+    <motion.div
+      variants={itemVariants}
+      className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-all duration-300"
+    >
+      <div className="flex justify-between items-start mb-3">
+        <div>
+          <h3 className="text-lg font-semibold text-foreground mb-1 font-merriweather">
+            {project.title}
+          </h3>
+          <p className="text-sm text-foreground/60 font-merriweather">
+            {project.period}
+          </p>
+        </div>
+        {project.status === "current" && (
+          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium">
+            Current
+          </span>
+        )}
+      </div>
+      
+      <p className="text-foreground/80 mb-3 leading-relaxed font-merriweather text-sm">
+        {project.description}
+      </p>
+      
+      <div className="flex flex-wrap gap-2 mb-3">
+        {project.technologies.map((tech) => (
+          <span
+            key={tech}
+            className="px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      
+      {project.links && (
+        <div className="flex gap-2">
+          {project.links.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+            >
+              <span>View Code</span>
+              <Github className="w-4 h-4 ml-1" />
+            </a>
+          )}
+          {project.links.website && (
+            <a
+              href={project.links.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+            >
+              <span>Visit Website</span>
+              <ExternalLink className="w-4 h-4 ml-1" />
+            </a>
+          )}
+          {project.links.play && (
+            <a
+              href={project.links.play}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+            >
+              <span>Play Game</span>
+              <Play className="w-4 h-4 ml-1" />
+            </a>
+          )}
+        </div>
+      )}
+    </motion.div>
+  );
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+
+      {/* Main Content */}
+      <main className="pt-24 pb-20 px-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-6xl mx-auto"
+        >
+          {/* Header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground font-playfair">
+              Projects
+            </h1>
+            <p className="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-merriweather">
+              See my past and current projects.
+            </p>
+          </motion.div>
+
+          {/* Currently Working On */}
+          {currentProjects.length > 0 && (
+            <motion.div variants={itemVariants} className="mb-16">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-foreground font-playfair mb-2">
+                  Currently Working On
+                </h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {currentProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Past Projects */}
+          {pastProjects.length > 0 && (
+            <motion.div variants={itemVariants}>
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-foreground font-playfair mb-2">
+                  Past Projects
+                </h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {pastProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+} 

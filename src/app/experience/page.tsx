@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, ExternalLink, Building2, Users, Heart } from "lucide-react";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function Experience() {
   const containerVariants = {
@@ -31,86 +33,94 @@ export default function Experience() {
   const experienceData = {
     currentRoles: [
       {
+        company: "Queen Mary University of London",
+        logo: "/logos/qmul_logo.png",
+        role: "Computer Systems and Networks Demonstrator",
+        period: " Sep 2025 - Present",
+        type: "Part-Time",
+        description: "Providing front-line support for student learning by helping students overcome difficulties with course material, supporting laboratory work and formative exercises, providing individual feedback on student work, and assisting with marking coursework and in-class assessments.",
+      },
+      {
         company: "LucidTrack",
         logo: "/logos/lucidtrack_logo.png",
         role: "Co-founder",
-        period: "2025 - Present",
+        period: "Apr 2025 - Present",
         type: "Startup",
+        companyDescription: "A startup focused on revolutionizing the internship application process by providing students and job seekers with comprehensive tools to track applications, manage interviews, and visualize their career progress.",
         description: "Co-founder of LucidTrack, an all-in-one platform for managing internship applications, interviews, and deadlines. LucidTrack helps students and job seekers track their applications, schedule interviews, set deadline reminders, and visualize their progress with analytics. The platform features a collaborative dashboard, powerful search, and sharing tools to streamline the internship search process. Launching August 2025.",
         link: "https://lucidtrack.dev",
-        technologies: ["React", "Node.js", "PostgreSQL", "Docker", "AWS"]
+        technologies: ["React", "Next.js", "Supabase", "Vercel", "Tailwind CSS"]
       },
       {
         company: "Hyperlink London",
         logo: "/logos/hyperlink_logo.jpeg",
-        role: "Head of Electrical & Treasurer",
-        period: "Sep 2025 - Present",
+        period: "Sep 2024 - Present",
         type: "Student Society",
-        description: "Leading electrical systems and financial management for Hyperlink London's IoT projects.",
+        companyDescription: "A student-led engineering society at Queen Mary University of London building London's first fully operational Hyperloop pod prototype. The team focuses on developing financially feasible, scalable Hyperloop technology while researching social sustainability, safety systems, and community integration to bring Hyperloop implementation closer to reality in Europe.",
         link: "https://www.hyperlinklondon.com",
-        technologies: ["IoT", "Electrical Systems", "Financial Management"]
-      },
-      {
-        company: "Hyperlink London",
-        logo: "/logos/hyperlink_logo.jpeg",
-        role: "Head of Software",
-        period: "Sep 2024 - Aug 2025",
-        type: "Student Society",
-        description: "Managed a team of 10 people to develop a modular end-to-end IoT system at Hyperlink, integrating ESP32-based embedded sensors with a local backend infrastructure. Designed and implemented a finite state machine (FSM) architecture to govern sensor behaviour and edge decision-making. Built a FastAPI-based RESTful API connected to a PostgreSQL database via SQLModel, supporting asynchronous data collection and structured storage. Utilised Docker to containerise backend services for consistent local deployment. Additionally, developed a real-time user interface using Electron to visualise and interact with live sensor data.",
-        link: "https://www.hyperlinklondon.com",
-        technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "ESP32", "Electron", "IoT"]
+        positions: [
+          {
+            role: "Head of Electrical & Treasurer",
+            period: "Sep 2025 - Present",
+            description: "Leading electrical systems and financial management for Hyperlink London's IoT projects.",
+            technologies: ["IoT", "Electrical Systems", "Financial Management"]
+          },
+          {
+            role: "Head of Software",
+            period: "Sep 2024 - Aug 2025",
+            description: "Managed a team of 10 people to develop a modular end-to-end IoT system at Hyperlink, integrating ESP32-based embedded sensors with a local backend infrastructure. Designed and implemented a finite state machine (FSM) architecture to govern sensor behaviour and edge decision-making. Built a FastAPI-based RESTful API connected to a PostgreSQL database via SQLModel, supporting asynchronous data collection and structured storage. Utilised Docker to containerise backend services for consistent local deployment. Additionally, developed a real-time user interface using Electron to visualise and interact with live sensor data.",
+            technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "ESP32", "Electron", "IoT"]
+          }
+        ]
       }
     ],
     previousEmployment: [
       {
         company: "CyanoCapture",
         logo: "/logos/cyanocapture_logo.png",
-        role: "Software Engineer",
-        period: "Sep 2023 - Aug 2024",
+        period: "Jan 2023 - Aug 2024",
         type: "Full-Time",
-        description: "Managed the development of a cloud-native industrial IoT system engineered for real-time data processing and communication, leveraging MQTT for efficient data transmission, Docker for deployment portability, and an integrated Solara FastAPI stack for streamlined cloud-based IoT services. Deployed on Google Cloud Platform (GCP) to ensure scalability and reliability.",
+        companyDescription: "A pioneering climate tech company that won Elon Musk's XPRIZE 2021 and Shell New Energy Challenge 2023 for their revolutionary photosynthetic biomanufacturing platform. CyanoCapture uses genetically engineered cyanobacteria to synthesize high-value compounds directly from CO2 and sunlight.",
         link: "https://www.cyanocapture.com",
-        technologies: ["Python", "FastAPI", "MQTT", "Docker", "GCP", "IoT", "Solara"]
-      },
-      {
-        company: "CyanoCapture",
-        logo: "/logos/cyanocapture_logo.png",
-        role: "Software Engineer Summer Intern",
-        period: "Aug 2023 - Sep 2023",
-        type: "Full-Time",
-        description: "Summer internship focused on software development and IoT systems.",
-        link: "https://www.cyanocapture.com",
-        technologies: ["Python", "IoT", "Software Development"]
-      },
-      {
-        company: "CyanoCapture",
-        logo: "/logos/cyanocapture_logo.png",
-        role: "Software Engineer Intern",
-        period: "Jan 2023 - May 2023",
-        type: "Part-Time",
-        description: "Part-time internship in software engineering and development.",
-        link: "https://www.cyanocapture.com",
-        technologies: ["Software Development", "Python"]
+        positions: [
+          {
+            role: "Software Engineer",
+            period: "Sep 2023 - Aug 2024",
+            description: "Managed the development of a cloud-native industrial IoT system engineered for real-time data processing and communication, leveraging MQTT for efficient data transmission, Docker for deployment portability, and an integrated Solara FastAPI stack for streamlined cloud-based IoT services. Deployed on Google Cloud Platform (GCP) to ensure scalability and reliability.",
+            technologies: ["Python", "FastAPI", "MQTT", "Docker", "GCP", "IoT", "Solara"]
+          },
+          {
+            role: "Software Engineer Summer Intern",
+            period: "Aug 2023 - Sep 2023",
+            description: "Summer internship focused on software development and IoT systems.",
+            technologies: ["Python", "IoT"]
+          },
+          {
+            role: "Software Engineer Intern",
+            period: "Jan 2023 - May 2023",
+            description: "Part-time internship in software engineering and development.",
+            technologies: ["Python", "IoT"]
+          }
+        ]
       }
     ],
     volunteering: [
       {
         organization: "NHS England",
-        logo: "🏥",
+        logo: "/logos/nhs_logo.png",
         role: "Expert by Experience",
         period: "Aug 2024 - Present",
         description: "Providing expert insights and feedback to improve NHS services and patient experience."
       },
       {
         organization: "NHS Blood and Transplant",
-        logo: "🩸",
-        role: "Volunteer",
+        logo: "/logos/nhs_blood_logo.png",
+        role: "Platelet donor",
         period: "Feb 2023 - Present",
-        description: "Supporting blood donation and transplant services."
       },
       {
         organization: "The Oxbridge Foundation",
-        logo: "🎓",
+        logo: "/logos/oxbridge_foundation_logo.png",
         role: "Charity Work",
         period: "Feb 2022",
         description: "Volunteering and charity work to support educational initiatives."
@@ -120,43 +130,7 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Simple Navigation */}
-      <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm"
-      >
-        <div className="w-full py-6 px-6">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-primary font-playfair cursor-pointer"
-              >
-                Harry Barnish
-              </motion.div>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Experience", href: "/experience" },
-                { name: "Projects", href: "/projects" },
-                { name: "Tech Stack", href: "/tech-stack" }
-              ].map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <motion.div
-                    whileHover={{ y: -1 }}
-                    className="text-foreground/70 hover:text-foreground cursor-pointer transition-colors font-merriweather"
-                  >
-                    {item.name}
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.nav>
+      <Navbar />
 
       {/* Main Content */}
       <main className="pt-24 px-6 pb-20">
@@ -201,7 +175,7 @@ export default function Experience() {
               <div className="space-y-8">
                 {experienceData.currentRoles.map((role, index) => (
                   <motion.div
-                    key={`${role.company}-${role.role}`}
+                    key={`${role.company}-${index}`}
                     variants={itemVariants}
                     className="relative pl-16"
                   >
@@ -225,32 +199,73 @@ export default function Experience() {
                             <span className="text-2xl mr-3">{role.logo}</span>
                           )}
                           <div>
-                            <h3 className="text-xl font-bold text-foreground font-playfair">{role.role}</h3>
-                            <p className="text-lg text-primary font-merriweather">{role.company}</p>
+                            <h3 className="text-xl font-bold text-foreground font-playfair">{role.company}</h3>
+                            <p className="text-lg text-primary font-merriweather">{role.period}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-foreground/60 font-merriweather">{role.period}</p>
                           <span className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded-full font-merriweather">
                             {role.type}
                           </span>
                         </div>
                       </div>
-                      
-                      <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
-                        {role.description}
-                      </p>
 
-                      {role.technologies && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {role.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
-                            >
-                              {tech}
-                            </span>
+                      {/* Company Description */}
+                      {role.companyDescription && (
+                        <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
+                          {role.companyDescription}
+                        </p>
+                      )}
+
+                      {/* Positions */}
+                      {'positions' in role ? (
+                        <div className="space-y-4">
+                          {role.positions?.map((position, posIndex) => (
+                            <div key={posIndex} className="border-l-2 border-primary/20 pl-4">
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="text-lg font-semibold text-foreground font-playfair">{position.role}</h4>
+                                <p className="text-sm text-foreground/60 font-merriweather">{position.period}</p>
+                              </div>
+                              <p className="text-foreground/80 font-merriweather leading-relaxed mb-3">
+                                {position.description}
+                              </p>
+                              {position.technologies && (
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                  {position.technologies.map((tech: string) => (
+                                    <span
+                                      key={tech}
+                                      className="px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
+                                    >
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
                           ))}
+                        </div>
+                      ) : (
+                        // Fallback for single position roles (like LucidTrack)
+                        <div>
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="text-lg font-semibold text-foreground font-playfair">{role.role}</h4>
+                            <p className="text-sm text-foreground/60 font-merriweather">{role.period}</p>
+                          </div>
+                          <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
+                            {role.description}
+                          </p>
+                          {role.technologies && (
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {role.technologies.map((tech: string) => (
+                                <span
+                                  key={tech}
+                                  className="px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       )}
 
@@ -261,7 +276,7 @@ export default function Experience() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
                         >
-                          Learn more <ExternalLink className="w-4 h-4 ml-1" />
+                          {role.company === "LucidTrack" ? "Visit site" : "Learn more"} <ExternalLink className="w-4 h-4 ml-1" />
                         </a>
                       )}
                     </div>
@@ -285,7 +300,7 @@ export default function Experience() {
               <div className="space-y-8">
                 {experienceData.previousEmployment.map((role, index) => (
                   <motion.div
-                    key={`${role.company}-${role.role}`}
+                    key={`${role.company}-${index}`}
                     variants={itemVariants}
                     className="relative pl-16"
                   >
@@ -309,33 +324,85 @@ export default function Experience() {
                             <span className="text-2xl mr-3">{role.logo}</span>
                           )}
                           <div>
-                            <h3 className="text-xl font-bold text-foreground font-playfair">{role.role}</h3>
-                            <p className="text-lg text-primary font-merriweather">{role.company}</p>
+                            <h3 className="text-xl font-bold text-foreground font-playfair">{role.company}</h3>
+                            <p className="text-lg text-primary font-merriweather">{role.period}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm text-foreground/60 font-merriweather">{role.period}</p>
                           <span className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded-full font-merriweather">
                             {role.type}
                           </span>
                         </div>
                       </div>
-                      
-                      <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
-                        {role.description}
-                      </p>
 
-                      {role.technologies && (
-                        <div className="flex flex-wrap gap-2">
-                          {role.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-xs bg-background/30 text-foreground/60 rounded-full border border-border/30 font-merriweather"
-                            >
-                              {tech}
-                            </span>
+                      {/* Company Description */}
+                      {role.companyDescription && (
+                        <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
+                          {role.companyDescription}
+                        </p>
+                      )}
+
+                      {/* Positions */}
+                      {'positions' in role ? (
+                        <div className="space-y-4">
+                          {role.positions?.map((position, posIndex) => (
+                            <div key={posIndex} className="border-l-2 border-primary/20 pl-4">
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="text-lg font-semibold text-foreground font-playfair">{position.role}</h4>
+                                <p className="text-sm text-foreground/60 font-merriweather">{position.period}</p>
+                              </div>
+                              <p className="text-foreground/80 font-merriweather leading-relaxed mb-3">
+                                {position.description}
+                              </p>
+                              {position.technologies && (
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                  {position.technologies.map((tech: string) => (
+                                    <span
+                                      key={tech}
+                                      className="px-3 py-1 text-xs bg-background/30 text-foreground/60 rounded-full border border-border/30 font-merriweather"
+                                    >
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
                           ))}
                         </div>
+                      ) : (
+                        // Fallback for single position roles
+                        <div>
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="text-lg font-semibold text-foreground font-playfair">{role.role}</h4>
+                            <p className="text-sm text-foreground/60 font-merriweather">{role.period}</p>
+                          </div>
+                          <p className="text-foreground/80 font-merriweather leading-relaxed mb-4">
+                            {role.description}
+                          </p>
+                          {role.technologies && (
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {role.technologies.map((tech: string) => (
+                                <span
+                                  key={tech}
+                                  className="px-3 py-1 text-xs bg-background/30 text-foreground/60 rounded-full border border-border/30 font-merriweather"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {role.link && (
+                        <a
+                          href={role.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+                        >
+                          Learn more <ExternalLink className="w-4 h-4 ml-1" />
+                        </a>
                       )}
                     </div>
                   </motion.div>
@@ -368,20 +435,44 @@ export default function Experience() {
                     <div className="bg-card/20 backdrop-blur-sm rounded-lg p-6 border border-border/20 hover:border-primary/10 transition-all duration-300">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center">
-                          <span className="text-2xl mr-3">{volunteer.logo}</span>
+                          {volunteer.logo.endsWith('.png') || volunteer.logo.endsWith('.jpeg') || volunteer.logo.endsWith('.jpg') ? (
+                            <div className="w-12 h-12 mr-3 relative flex-shrink-0 rounded-lg overflow-hidden">
+                              <Image
+                                src={volunteer.logo}
+                                alt={`${volunteer.organization} logo`}
+                                fill
+                                className="object-contain"
+                                sizes="48px"
+                              />
+                            </div>
+                          ) : (
+                            <span className="text-2xl mr-3">{volunteer.logo}</span>
+                          )}
                           <div>
-                            <h3 className="text-xl font-bold text-foreground font-playfair">{volunteer.role}</h3>
-                            <p className="text-lg text-primary font-merriweather">{volunteer.organization}</p>
+                            <h3 className="text-xl font-bold text-foreground font-playfair">{volunteer.organization}</h3>
+                            <p className="text-lg text-primary font-merriweather">{volunteer.period}</p>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <p className="text-sm text-foreground/60 font-merriweather">{volunteer.period}</p>
-                        </div>
+                      </div>
+                      
+                      <div className="flex items-start justify-between mb-2">
+                        <h4 className="text-lg font-semibold text-foreground font-playfair">{volunteer.role}</h4>
                       </div>
                       
                       <p className="text-foreground/80 font-merriweather leading-relaxed">
                         {volunteer.description}
                       </p>
+                      
+                      {volunteer.organization === "NHS Blood and Transplant" && (
+                        <a
+                          href="https://www.blood.co.uk"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather mt-3"
+                        >
+                          Donate now <ExternalLink className="w-4 h-4 ml-1" />
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 ))}
@@ -391,12 +482,7 @@ export default function Experience() {
         </motion.div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-4 text-center bg-background/90 backdrop-blur-sm border-t border-border/20">
-        <p className="text-foreground/60 text-sm font-merriweather">
-          Built by Harry Barnish
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 } 

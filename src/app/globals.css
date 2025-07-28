@@ -52,7 +52,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted);
+  background: var(--primary);
   border-radius: 4px;
 }
 

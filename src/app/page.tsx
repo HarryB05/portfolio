@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const containerVariants = {
@@ -31,59 +33,18 @@ export default function Home() {
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/HarryB05",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com/in/yourusername",
-    },
-    {
-      name: "Email",
-      icon: Mail,
-      href: "mailto:your.email@example.com",
+      href: "https://www.linkedin.com/in/harry-barnish",
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Simple Navigation */}
-      <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm"
-      >
-        <div className="w-full py-6 px-6">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-primary font-playfair cursor-pointer"
-              >
-                Harry Barnish
-              </motion.div>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Experience", href: "/experience" },
-                { name: "Projects", href: "/projects" },
-                { name: "Tech Stack", href: "/tech-stack" }
-              ].map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <motion.div
-                    whileHover={{ y: -1 }}
-                    className="text-foreground/70 hover:text-foreground cursor-pointer transition-colors font-merriweather"
-                  >
-                    {item.name}
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.nav>
+      <Navbar />
 
       {/* Main Content */}
       <main className="flex items-center justify-center min-h-screen px-6 pb-20">
@@ -113,21 +74,25 @@ export default function Home() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
           >
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 transition-colors font-merriweather"
-            >
-              View Projects
-            </motion.button>
+            <Link href="/projects">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 transition-colors font-merriweather"
+              >
+                View Projects
+              </motion.button>
+            </Link>
             
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="border border-primary/30 text-primary px-8 py-4 rounded-lg font-medium hover:bg-primary/10 transition-colors font-merriweather"
-            >
-              Tech Stack
-            </motion.button>
+            <Link href="/tech-stack">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="border border-primary/30 text-primary px-8 py-4 rounded-lg font-medium hover:bg-primary/10 transition-colors font-merriweather"
+              >
+                Tech Stack
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Social Links */}
@@ -151,12 +116,7 @@ export default function Home() {
         </motion.div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-4 text-center bg-background/90 backdrop-blur-sm border-t border-border/20">
-        <p className="text-foreground/60 text-sm font-merriweather">
-          Built by Harry Barnish
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
