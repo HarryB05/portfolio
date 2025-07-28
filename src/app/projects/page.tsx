@@ -111,32 +111,29 @@ export default function Projects() {
   const pastProjects = projects.filter(p => p.status === "past");
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.8 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
+        duration: 0.4,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0.7, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
 
   const ProjectCard = ({ project }: { project: Project }) => (
-    <motion.div
-      variants={itemVariants}
-      className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-all duration-300"
-    >
+    <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-all duration-300">
       <div className="flex justify-between items-start mb-3">
         <div>
           <h3 className="text-lg font-semibold text-foreground mb-1 font-merriweather">
@@ -205,7 +202,7 @@ export default function Projects() {
           )}
         </div>
       )}
-    </motion.div>
+    </div>
   );
 
   return (
@@ -240,8 +237,15 @@ export default function Projects() {
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {currentProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
+                {currentProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                  >
+                    <ProjectCard project={project} />
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -257,8 +261,15 @@ export default function Projects() {
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {pastProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
+                {pastProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: (currentProjects.length * 0.1) + (index * 0.1) }}
+                  >
+                    <ProjectCard project={project} />
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

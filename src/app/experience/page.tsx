@@ -9,23 +9,23 @@ import Navbar from "@/components/Navbar";
 
 export default function Experience() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.8 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
+        duration: 0.4,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0.7, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };

@@ -22,9 +22,9 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
 
   return (
     <motion.nav
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0.8 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.2 }}
       className={`fixed top-0 w-full z-50 ${
         variant === "light" 
           ? "bg-white/80 backdrop-blur-md border-b border-gray-200" 
@@ -35,7 +35,6 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
         <div className="flex items-center justify-between">
           <Link href="/">
             <motion.div
-              whileHover={{ scale: 1.05 }}
               className={`text-2xl font-bold font-playfair cursor-pointer ${
                 variant === "light" ? "text-gray-900" : "text-primary"
               }`}

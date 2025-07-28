@@ -8,23 +8,23 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.8 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
+        duration: 0.4,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0.7, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
@@ -47,7 +47,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex items-center justify-center min-h-screen px-6 pb-20">
+      <main className="flex items-center justify-center min-h-screen px-6 pt-16">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -65,34 +65,8 @@ export default function Home() {
             <motion.p
               className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed font-merriweather"
             >
-              Computer Science student passionate about building innovative solutions and creating impactful projects.
+              Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.
             </motion.p>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-          >
-            <Link href="/projects">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium hover:bg-primary/90 transition-colors font-merriweather"
-              >
-                View Projects
-              </motion.button>
-            </Link>
-            
-            <Link href="/tech-stack">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="border border-primary/30 text-primary px-8 py-4 rounded-lg font-medium hover:bg-primary/10 transition-colors font-merriweather"
-              >
-                Tech Stack
-              </motion.button>
-            </Link>
           </motion.div>
 
           {/* Social Links */}

@@ -40,6 +40,23 @@ body {
   color: var(--foreground);
   font-family: var(--font-merriweather), Georgia, serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  /* Prevent layout shifts */
+  overflow-x: hidden;
+}
+
+/* Prevent flash of invisible content */
+.js-loading * {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
+/* Reduce initial animation intensity */
+html.preload * {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
 }
 
 /* Custom scrollbar */
@@ -60,9 +77,16 @@ body {
   background: var(--primary);
 }
 
-/* Smooth transitions for all interactive elements */
-* {
+/* Smooth transitions for specific interactive elements only */
+button, a, .interactive {
   transition: all 0.2s ease-in-out;
+}
+
+/* Prevent animations until page is loaded */
+.preload * {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
 }
 
 /* Loading skeleton animation */

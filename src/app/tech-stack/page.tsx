@@ -8,23 +8,23 @@ import Navbar from "@/components/Navbar";
 
 export default function TechStack() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.8 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
+        duration: 0.4,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0.7, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
@@ -143,11 +143,11 @@ export default function TechStack() {
                   {category.items.map((item, itemIndex) => (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0.7, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
-                        duration: 0.4,
-                        delay: (categoryIndex * 0.05) + (itemIndex * 0.02),
+                        duration: 0.2,
+                        delay: (categoryIndex * 0.02) + (itemIndex * 0.01),
                       }}
                       className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border/50"
                     >

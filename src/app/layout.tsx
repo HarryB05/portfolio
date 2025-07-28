@@ -5,12 +5,14 @@ import "./globals.css";
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],
   weight: ["300", "400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,6 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.documentElement.classList.add('preload');
+              window.addEventListener('load', function() {
+                document.documentElement.classList.remove('preload');
+              });
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${playfair.variable} ${merriweather.variable} antialiased bg-background text-foreground`}
       >
