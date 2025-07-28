@@ -132,10 +132,10 @@ export default function Projects() {
   };
 
   const ProjectCard = ({ project }: { project: Project }) => (
-    <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-all duration-300">
-      <div className="flex justify-between items-start mb-3">
-        <div>
-          <h3 className="text-lg font-semibold text-foreground mb-1 font-merriweather">
+    <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-border/50 hover:border-primary/30 transition-all duration-300">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 space-y-2 sm:space-y-0">
+        <div className="min-w-0">
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-1 font-merriweather leading-tight">
             {project.title}
           </h3>
           <p className="text-sm text-foreground/60 font-merriweather">
@@ -143,21 +143,21 @@ export default function Projects() {
           </p>
         </div>
         {project.status === "current" && (
-          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium">
+          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium self-start whitespace-nowrap">
             Current
           </span>
         )}
       </div>
       
-      <p className="text-foreground/80 mb-3 leading-relaxed font-merriweather text-sm">
+      <p className="text-sm sm:text-base text-foreground/80 mb-3 leading-relaxed font-merriweather">
         {project.description}
       </p>
       
-      <div className="flex flex-wrap gap-2 mb-3">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
         {project.technologies.map((tech) => (
           <span
             key={tech}
-            className="px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
+            className="px-2 sm:px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
           >
             {tech}
           </span>
@@ -165,16 +165,16 @@ export default function Projects() {
       </div>
       
       {project.links && (
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           {project.links.github && (
             <a
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
             >
               <span>View Code</span>
-              <Github className="w-4 h-4 ml-1" />
+              <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
             </a>
           )}
           {project.links.website && (
@@ -182,10 +182,10 @@ export default function Projects() {
               href={project.links.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
             >
               <span>Visit Website</span>
-              <ExternalLink className="w-4 h-4 ml-1" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
             </a>
           )}
           {project.links.play && (
@@ -193,10 +193,10 @@ export default function Projects() {
               href={project.links.play}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
             >
               <span>Play Game</span>
-              <Play className="w-4 h-4 ml-1" />
+              <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
             </a>
           )}
         </div>
@@ -209,7 +209,7 @@ export default function Projects() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-24 pb-20 px-6">
+      <main className="pt-20 sm:pt-24 px-4 sm:px-6 pb-16 sm:pb-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -217,25 +217,25 @@ export default function Projects() {
           className="max-w-6xl mx-auto"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground font-playfair">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground font-playfair">
               Projects
             </h1>
-            <p className="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-merriweather">
+            <p className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-merriweather px-4">
               See my past and current projects.
             </p>
           </motion.div>
 
           {/* Currently Working On */}
           {currentProjects.length > 0 && (
-            <motion.div variants={itemVariants} className="mb-16">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-foreground font-playfair mb-2">
+            <motion.div variants={itemVariants} className="mb-12 sm:mb-16">
+              <div className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground font-playfair mb-2">
                   Currently Working On
                 </h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 {currentProjects.map((project, index) => (
                   <motion.div
                     key={project.id}
@@ -253,13 +253,13 @@ export default function Projects() {
           {/* Past Projects */}
           {pastProjects.length > 0 && (
             <motion.div variants={itemVariants}>
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-foreground font-playfair mb-2">
+              <div className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground font-playfair mb-2">
                   Past Projects
                 </h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {pastProjects.map((project, index) => (
                   <motion.div
                     key={project.id}
