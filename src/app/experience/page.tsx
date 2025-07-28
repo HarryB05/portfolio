@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin, ExternalLink, Building2, Users, Heart } from "lucide-react";
+import { Calendar, ExternalLink, Building2, Heart } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ThemeAwareLogo from "@/components/ThemeAwareLogo";
@@ -436,7 +435,7 @@ export default function Experience() {
               </div>
 
               <div className="space-y-8">
-                {experienceData.volunteering.map((volunteer, index) => (
+                {experienceData.volunteering.map((volunteer) => (
                   <motion.div
                     key={`${volunteer.organization}-${volunteer.role}`}
                     variants={itemVariants}

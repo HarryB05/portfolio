@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
-import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -59,7 +58,7 @@ export default function Home() {
             <motion.h1
               className="text-6xl md:text-8xl font-bold mb-8 text-foreground font-playfair"
             >
-              Hi, I'm Harry
+              Hi, I&apos;m Harry
             </motion.h1>
             
             <motion.p

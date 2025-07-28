@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play } from "lucide-react";
-import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
