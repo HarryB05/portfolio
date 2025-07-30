@@ -8,15 +8,6 @@ import Footer from "@/components/Footer";
 
 export default function NotFound() {
 
-  // Floating particles animation
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 2,
-    duration: Math.random() * 20 + 10,
-  }));
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       <Navbar />
@@ -24,34 +15,8 @@ export default function NotFound() {
       <div 
         className="relative flex items-start justify-center min-h-[calc(100vh-200px)] pt-16"
       >
-        {/* Animated background particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute rounded-full bg-primary/20"
-              style={{
-                width: particle.size,
-                height: particle.size,
-                left: `${particle.x}%`,
-                top: `${particle.y}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, Math.random() * 20 - 10, 0],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-
         {/* Main content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="text-center px-6 max-w-4xl mx-auto">
           {/* 404 text */}
           <motion.div
             className="relative mb-8"
