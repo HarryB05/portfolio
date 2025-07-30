@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect } from "react";
 import { Calendar, ExternalLink, Building2, Heart } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -52,6 +53,10 @@ interface ExperienceData {
 }
 
 export default function Experience() {
+  useEffect(() => {
+    document.title = "Harry Barnish - Experience";
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0.8 },
     visible: {

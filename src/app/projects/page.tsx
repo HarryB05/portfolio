@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play } from "lucide-react";
+import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -20,6 +21,10 @@ interface Project {
 }
 
 export default function Projects() {
+  useEffect(() => {
+    document.title = "Harry Barnish - Projects";
+  }, []);
+
   const projects: Project[] = [
     {
       id: "lucidtrack",

@@ -2,9 +2,14 @@
 
 import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 
 export default function TechStack() {
+  useEffect(() => {
+    document.title = "Harry Barnish - Skills";
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0.8 },
     visible: {

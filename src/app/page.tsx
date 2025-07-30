@@ -1,11 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { Github, Linkedin } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Harry Barnish";
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0.8 },
     visible: {
