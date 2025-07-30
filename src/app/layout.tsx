@@ -23,9 +23,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Harry Barnish" }],
   creator: "Harry Barnish",
   publisher: "Harry Barnish",
-  metadataBase: new URL(process.env.NODE_ENV === 'production' 
-    ? 'https://harrybarnish.com' 
-    : 'http://localhost:3000'),
+  metadataBase: new URL('https://harrybarnish.co.uk'),
   alternates: {
     canonical: '/',
   },
