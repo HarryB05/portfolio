@@ -17,7 +17,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "Harry Barnish - Computer Science Student",
+  title: "Harry Barnish",
   description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
   keywords: ["Harry Barnish", "Computer Science", "Developer", "Portfolio", "Queen Mary University", "Software Development"],
   authors: [{ name: "Harry Barnish" }],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: "Harry Barnish - Computer Science Student",
+    title: "Harry Barnish",
     description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
     siteName: "Harry Barnish Portfolio",
     images: [
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
         url: '/opengraph.png',
         width: 1200,
         height: 630,
-        alt: 'Harry Barnish - Computer Science Student',
+        alt: 'Harry Barnish',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Harry Barnish - Computer Science Student",
+    title: "Harry Barnish",
     description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
     images: ['/opengraph.png'],
     creator: '@harrybarnish',
