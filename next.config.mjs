@@ -9,7 +9,9 @@ const nextConfig = {
     images: {
       unoptimized: true,
     },
-    output: "export"
+    output: "export",
+    trailingSlash: true,
+    distDir: 'out'
   }
   
   export default nextConfig
