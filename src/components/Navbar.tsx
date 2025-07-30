@@ -85,15 +85,14 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
                   {navigationItems.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <motion.div
-                        whileHover={{ y: -1 }}
                         className={`cursor-pointer transition-colors font-merriweather ${
                           isActive(item.href)
                             ? variant === "light"
                               ? "text-blue-600 font-semibold"
                               : "text-primary font-semibold"
                             : variant === "light"
-                              ? "text-gray-600 hover:text-gray-900"
-                              : "text-foreground/70 hover:text-foreground"
+                              ? "text-gray-600 hover:text-orange-600"
+                              : "text-foreground/70 hover:text-primary"
                         }`}
                       >
                         {item.name}
@@ -157,8 +156,8 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
                               ? "text-blue-600 font-semibold bg-blue-50/50"
                               : "text-primary font-semibold bg-primary/10"
                             : variant === "light"
-                              ? "text-gray-700 hover:text-gray-900 hover:bg-gray-50/50"
-                              : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
+                              ? "text-gray-700 hover:text-orange-600"
+                              : "text-foreground/80 hover:text-primary"
                         }`}
                       >
                         {item.name}
