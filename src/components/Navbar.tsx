@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Home, Briefcase, Code, Layers } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
@@ -14,12 +14,13 @@ interface NavbarProps {
 export default function Navbar({ variant = "default" }: NavbarProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const navigationItems = [
-    { name: "Home", href: "/" },
-    { name: "Experience", href: "/experience" },
-    { name: "Projects", href: "/projects" },
-    { name: "Tech Stack", href: "/tech-stack" }
+    { name: "Home", href: "/", icon: Home },
+    { name: "Experience", href: "/experience", icon: Briefcase },
+    { name: "Projects", href: "/projects", icon: Code },
+    { name: "Tech Stack", href: "/tech-stack", icon: Layers }
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -27,17 +28,42 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const shouldBeScrolled = scrollPosition > 100;
+      
+      // Close mobile menu when transitioning between navbar states
+      if (shouldBeScrolled !== isScrolled && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+      
+      setIsScrolled(shouldBeScrolled);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isScrolled, isMenuOpen]);
+
   return (
     <>
+      {/* Regular Navbar */}
       <motion.nav
-        initial={{ opacity: 0.8 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className={`fixed top-0 w-full z-50 ${
+        initial={{ opacity: 0.8, y: 0 }}
+        animate={{ 
+          opacity: isScrolled ? 0 : 1,
+          y: isScrolled ? -100 : 0
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={`relative w-full z-50 ${
           variant === "light" 
             ? "bg-white/80 backdrop-blur-md border-b border-gray-200" 
             : "bg-background/90 backdrop-blur-sm"
-        }`}
+        } ${isScrolled ? "pointer-events-none" : ""}`}
       >
         <div className="w-full">
           {/* Main Navbar */}
@@ -106,7 +132,7 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
 
           {/* Mobile Menu Dropdown */}
           <AnimatePresence>
-            {isMenuOpen && (
+            {isMenuOpen && !isScrolled && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -146,19 +172,170 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
         </div>
       </motion.nav>
 
-      {/* Invisible Click-Outside Overlay */}
+      {/* Floating Pill Navbar */}
       <AnimatePresence>
-        {isMenuOpen && (
+        {isScrolled && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden"
-            style={{ top: '100px' }} // Start below the navbar
-            onClick={closeMenu}
-            aria-hidden="true"
-          />
+            initial={{ opacity: 0, y: -50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -50, scale: 0.8 }}
+            transition={{ duration: 0.4, type: "spring", stiffness: 400, damping: 30 }}
+            className="fixed left-1/2 transform -translate-x-1/2 z-50"
+            style={{ top: 'max(10px, env(safe-area-inset-top, 0px) + 0px)' }}
+          >
+            <div className={`
+              px-8 py-3 rounded-full shadow-lg border backdrop-blur-md min-w-[800px] max-w-6xl hidden sm:flex
+              ${variant === "light" 
+                ? "bg-white/50 border-gray-200/20 shadow-gray-200/5" 
+                : "bg-background/50 border-border/20 shadow-black/5"
+              }
+            `}>
+              <div className="flex items-center justify-between w-full">
+                {/* Left side - Name */}
+                <div className="flex items-center">
+                  <div className={`text-lg font-semibold font-playfair ${
+                    variant === "light" ? "text-gray-900" : "text-primary"
+                  }`}>
+                    Harry Barnish
+                  </div>
+                </div>
+
+                {/* Center/Right side - Navigation Links */}
+                <div className="flex items-center space-x-3">
+                  {/* Desktop Navigation Text Links */}
+                  <div className="flex items-center space-x-1">
+                    {navigationItems.map((item) => (
+                      <Link key={item.name} href={item.href}>
+                        <motion.div
+                          whileTap={{ scale: 0.95 }}
+                          className={`
+                            px-3 py-1.5 rounded-full transition-all duration-200 text-sm font-medium font-merriweather
+                            ${isActive(item.href)
+                              ? variant === "light"
+                                ? "bg-blue-100 text-blue-600"
+                                : "bg-primary/20 text-primary"
+                              : variant === "light"
+                                ? "hover:bg-orange-50 text-gray-600"
+                                : "hover:bg-orange-500/10 text-foreground/70"
+                            }
+                          `}
+                        >
+                          {item.name}
+                        </motion.div>
+                      </Link>
+                    ))}
+                  </div>
+                  
+                  {/* Divider */}
+                  <div className={`w-px h-6 ${
+                    variant === "light" ? "bg-gray-300" : "bg-border"
+                  }`} />
+                  
+                  {/* Theme Toggle */}
+                  <ThemeToggle />
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Floating Pill - Compact Design */}
+            <div className={`
+              px-4 py-2.5 rounded-full shadow-lg border backdrop-blur-md
+              ${variant === "light" 
+                ? "bg-white/50 border-gray-200/20 shadow-gray-200/5" 
+                : "bg-background/50 border-border/20 shadow-black/5"
+              }
+              sm:hidden flex items-center justify-center space-x-2 min-w-[240px]
+            `}>
+              {/* All navigation icons for mobile */}
+              <Link href="/">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`
+                    p-2 rounded-full transition-colors
+                    ${isActive("/")
+                      ? variant === "light"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-primary/20 text-primary"
+                      : variant === "light"
+                        ? "text-gray-600 hover:bg-orange-50"
+                        : "text-foreground/70 hover:bg-orange-500/10"
+                    }
+                  `}
+                >
+                  <Home className="h-4 w-4" />
+                </motion.div>
+              </Link>
+              
+              <Link href="/experience">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`
+                    p-2 rounded-full transition-colors
+                    ${isActive("/experience")
+                      ? variant === "light"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-primary/20 text-primary"
+                      : variant === "light"
+                        ? "text-gray-600 hover:bg-orange-50"
+                        : "text-foreground/70 hover:bg-orange-500/10"
+                    }
+                  `}
+                >
+                  <Briefcase className="h-4 w-4" />
+                </motion.div>
+              </Link>
+
+              <Link href="/projects">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`
+                    p-2 rounded-full transition-colors
+                    ${isActive("/projects")
+                      ? variant === "light"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-primary/20 text-primary"
+                      : variant === "light"
+                        ? "text-gray-600 hover:bg-orange-50"
+                        : "text-foreground/70 hover:bg-orange-500/10"
+                    }
+                  `}
+                >
+                  <Code className="h-4 w-4" />
+                </motion.div>
+              </Link>
+
+              <Link href="/tech-stack">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`
+                    p-2 rounded-full transition-colors
+                    ${isActive("/tech-stack")
+                      ? variant === "light"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-primary/20 text-primary"
+                      : variant === "light"
+                        ? "text-gray-600 hover:bg-orange-50"
+                        : "text-foreground/70 hover:bg-orange-500/10"
+                    }
+                  `}
+                >
+                  <Layers className="h-4 w-4" />
+                </motion.div>
+              </Link>
+              
+              {/* Divider */}
+              <div className={`w-px h-5 ${
+                variant === "light" ? "bg-gray-300" : "bg-border"
+              }`} />
+              
+              {/* Theme Toggle */}
+              <ThemeToggle />
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
