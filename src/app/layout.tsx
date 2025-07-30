@@ -17,8 +17,53 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "Harry Barnish - Computer Science Student & Developer",
-  description: "Computer Science student passionate about building innovative solutions and creating impactful projects.",
+  title: "Harry Barnish - Computer Science Student",
+  description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
+  keywords: ["Harry Barnish", "Computer Science", "Developer", "Portfolio", "Queen Mary University", "Software Development"],
+  authors: [{ name: "Harry Barnish" }],
+  creator: "Harry Barnish",
+  publisher: "Harry Barnish",
+  metadataBase: new URL('https://harrybarnish.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    title: "Harry Barnish - Computer Science Student",
+    description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
+    siteName: "Harry Barnish Portfolio",
+    images: [
+      {
+        url: '/opengraph.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harry Barnish - Computer Science Student',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Harry Barnish - Computer Science Student",
+    description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
+    images: ['/opengraph.png'],
+    creator: '@harrybarnish',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: '',
+  },
 };
 
 export default function RootLayout({
