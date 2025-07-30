@@ -78,7 +78,7 @@ export default function Projects() {
       technologies: ["Three.js", "JavaScript"],
       links: {
         github: "https://github.com/harrybarnish/village-blast",
-        play: "https://village-blast.vercel.app"
+        play: "https://harryb05.github.io/village-blaster/"
       },
       status: "past"
     },
