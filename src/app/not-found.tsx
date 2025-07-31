@@ -42,8 +42,8 @@ export default function NotFound() {
               Oops! Page Not Found
             </h2>
             <p className="text-lg md:text-xl font-merriweather text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-              The page you're looking for seems to have vanished into the digital void. 
-              But don't worry, let's get you back to where you need to be.
+              The page you&apos;re looking for seems to have vanished into the digital void. 
+              But don&apos;t worry, let&apos;s get you back to where you need to be.
             </p>
           </motion.div>
 

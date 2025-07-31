@@ -3,8 +3,16 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play } from "lucide-react";
 import { useEffect } from "react";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { ImageCarousel } from "@/components/ImageCarousel";
+
+interface CarouselImage {
+  light: string;
+  dark: string;
+  alt: string;
+}
 
 interface Project {
   id: string;
@@ -18,6 +26,8 @@ interface Project {
     play?: string;
   };
   status: "current" | "past";
+  image?: string;
+  carousel?: CarouselImage[];
 }
 
 export default function Projects() {
@@ -35,7 +45,29 @@ export default function Projects() {
       links: {
         website: "https://lucidtrack.com"
       },
-      status: "current"
+      status: "current",
+      carousel: [
+        {
+          light: "/projects/lucidtrack/dashbord_light.jpeg",
+          dark: "/projects/lucidtrack/dashbord_dark.jpeg",
+          alt: "LucidTrack Dashboard"
+        },
+        {
+          light: "/projects/lucidtrack/applications_id_light.jpeg",
+          dark: "/projects/lucidtrack/application_id_dark.jpeg",
+          alt: "Application Details"
+        },
+        {
+          light: "/projects/lucidtrack/stats_light.jpeg",
+          dark: "/projects/lucidtrack/stats_dark.jpeg",
+          alt: "Statistics Overview"
+        },
+        {
+          light: "/projects/lucidtrack/friends_light.jpeg",
+          dark: "/projects/lucidtrack/friends_dark.jpeg",
+          alt: "Friends Feature"
+        }
+      ]
     },
     {
       id: "estate-management",
@@ -46,7 +78,14 @@ export default function Projects() {
       links: {
         github: "https://github.com/harrybarnish/estate-management-system"
       },
-      status: "current"
+      status: "current",
+      carousel: [
+        {
+          light: "/projects/EMS/EMS_light.jpeg",
+          dark: "/projects/EMS/EMS_dark.jpeg",
+          alt: "Estate Management System Dashboard"
+        }
+      ]
     },
     {
       id: "student-welfare",
@@ -137,75 +176,95 @@ export default function Projects() {
   };
 
   const ProjectCard = ({ project }: { project: Project }) => (
-    <div className="bg-card/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-border/50 hover:border-primary/30 transition-all duration-300">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 space-y-2 sm:space-y-0">
-        <div className="min-w-0">
-          <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-1 font-merriweather leading-tight">
-            {project.title}
-          </h3>
-          <p className="text-sm text-foreground/60 font-merriweather">
-            {project.period}
-          </p>
-        </div>
-        {project.status === "current" && (
-          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium self-start whitespace-nowrap">
-            Current
-          </span>
-        )}
-      </div>
-      
-      <p className="text-sm sm:text-base text-foreground/80 mb-3 leading-relaxed font-merriweather">
-        {project.description}
-      </p>
-      
-      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
-        {project.technologies.map((tech) => (
-          <span
-            key={tech}
-            className="px-2 sm:px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      
-      {project.links && (
-        <div className="flex flex-wrap gap-3 sm:gap-4">
-          {project.links.github && (
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-            >
-              <span>View Code</span>
-              <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-            </a>
-          )}
-          {project.links.website && (
-            <a
-              href={project.links.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-            >
-              <span>Visit Website</span>
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-            </a>
-          )}
-          {project.links.play && (
-            <a
-              href={project.links.play}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-            >
-              <span>Play Game</span>
-              <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-            </a>
-          )}
+    <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden">
+      {(project.image || project.carousel) && (
+        <div className="mb-4">
+          {project.carousel ? (
+            <ImageCarousel images={project.carousel} />
+          ) : project.image ? (
+            <div className="relative aspect-[3/2] overflow-hidden rounded-t-lg bg-muted">
+              <Image
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                fill
+                className="object-cover rounded-t-lg"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          ) : null}
         </div>
       )}
+      
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 space-y-2 sm:space-y-0">
+          <div className="min-w-0">
+            <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-1 font-merriweather leading-tight">
+              {project.title}
+            </h3>
+            <p className="text-sm text-foreground/60 font-merriweather">
+              {project.period}
+            </p>
+          </div>
+          {project.status === "current" && (
+            <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium self-start whitespace-nowrap">
+              Current
+            </span>
+          )}
+        </div>
+        
+        <p className="text-sm sm:text-base text-foreground/80 mb-3 leading-relaxed font-merriweather">
+          {project.description}
+        </p>
+        
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
+          {project.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 sm:px-3 py-1 text-xs bg-background/50 text-foreground/70 rounded-full border border-border/50 font-merriweather"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        
+        {project.links && (
+          <div className="flex flex-wrap gap-3 sm:gap-4">
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>View Code</span>
+                <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
+            {project.links.website && (
+              <a
+                href={project.links.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>Visit Website</span>
+                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
+            {project.links.play && (
+              <a
+                href={project.links.play}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>Play Game</span>
+                <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 
@@ -264,13 +323,14 @@ export default function Projects() {
                 </h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6">
                 {pastProjects.map((project, index) => (
                   <motion.div
                     key={project.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: (currentProjects.length * 0.1) + (index * 0.1) }}
+                    className="break-inside-avoid mb-4 sm:mb-6"
                   >
                     <ProjectCard project={project} />
                   </motion.div>
