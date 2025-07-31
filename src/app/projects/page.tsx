@@ -28,6 +28,10 @@ interface Project {
   status: "current" | "past";
   image?: string;
   carousel?: CarouselImage[];
+  collaborators?: {
+    name: string;
+    github?: string;
+  }[];
 }
 
 export default function Projects() {
@@ -46,6 +50,12 @@ export default function Projects() {
         website: "https://lucidtrack.com"
       },
       status: "current",
+      collaborators: [
+        {
+          name: "Bernard Lee",
+          github: "https://github.com/Bernard-LTW"
+        }
+      ],
       carousel: [
         {
           light: "/projects/lucidtrack/dashbord_light.jpeg",
@@ -93,7 +103,13 @@ export default function Projects() {
       period: "05/2025 - Present",
       description: "I am currently building a student welfare system for boarding school students.",
       technologies: ["Supabase", "Next.js", "Tailwind CSS"],
-      status: "current"
+      status: "current",
+      collaborators: [
+        {
+          name: "Bernard Lee",
+          github: "https://github.com/Bernard-LTW"
+        }
+      ]
     },
     {
       id: "merkle-tree",
@@ -215,6 +231,31 @@ export default function Projects() {
         <p className="text-sm sm:text-base text-foreground/80 mb-3 leading-relaxed font-merriweather">
           {project.description}
         </p>
+        
+        {project.collaborators && project.collaborators.length > 0 && (
+          <div className="mb-3">
+            <p className="text-xs text-foreground/60 font-merriweather">
+              Built with{" "}
+              {project.collaborators.map((collaborator, index) => (
+                <span key={collaborator.name}>
+                  {collaborator.github ? (
+                    <a
+                      href={collaborator.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground/70 hover:text-primary transition-colors underline decoration-1 underline-offset-2"
+                    >
+                      {collaborator.name}
+                    </a>
+                  ) : (
+                    <span className="text-foreground/70">{collaborator.name}</span>
+                  )}
+                  {index < project.collaborators!.length - 1 && ", "}
+                </span>
+              ))}
+            </p>
+          </div>
+        )}
         
         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
           {project.technologies.map((tech) => (
