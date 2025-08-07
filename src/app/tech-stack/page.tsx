@@ -116,7 +116,7 @@ export default function TechStack() {
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground font-playfair"
             >
-              Skills
+              Tech Stack
             </motion.h1>
             <motion.p
               className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed font-merriweather px-4"
