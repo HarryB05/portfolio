@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { Github, Linkedin } from "lucide-react";
+import { Github } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import LinkedInIcon from "@/components/LinkedInIcon";
 
 export default function Home() {
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function Home() {
     },
     {
       name: "LinkedIn",
-      icon: Linkedin,
+      icon: LinkedInIcon,
       href: "https://www.linkedin.com/in/harry-barnish",
     },
   ];

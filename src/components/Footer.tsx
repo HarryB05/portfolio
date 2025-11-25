@@ -1,4 +1,5 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github } from "lucide-react";
+import LinkedInIcon from "./LinkedInIcon";
 
 export default function Footer() {
   const socialLinks = [
@@ -9,7 +10,7 @@ export default function Footer() {
     },
     {
       name: "LinkedIn",
-      icon: Linkedin,
+      icon: LinkedInIcon,
       href: "https://www.linkedin.com/in/harry-barnish",
     },
   ];

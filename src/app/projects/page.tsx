@@ -47,7 +47,7 @@ export default function Projects() {
       description: "LucidTrack is a modern web application designed to streamline the management of internship applications and their outcomes for students. It offers a customizable interface and gives a clear view into overall progress and performance of a students applications.",
       technologies: ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
       links: {
-        website: "https://lucidtrack.com"
+        website: "https://lucidtrack.dev"
       },
       status: "current",
       collaborators: [
@@ -86,7 +86,7 @@ export default function Projects() {
       description: "EMS (Estate Management System) is an all-in-one platform centralising contact management, expense tracking, mileage and time logging, and estate inventory management. I made EMS to help my family manage their estate.",
       technologies: ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
       links: {
-        github: "https://github.com/harrybarnish/estate-management-system"
+        github: "https://github.com/HarryB05/EMS"
       },
       status: "current",
       carousel: [
@@ -118,7 +118,7 @@ export default function Projects() {
       description: "A Python implementation of a Merkle Tree for learning and experimentation.",
       technologies: ["Python"],
       links: {
-        github: "https://github.com/harrybarnish/merkle-tree"
+        github: "https://github.com/HarryB05/merkle-tree"
       },
       status: "past"
     },
@@ -137,7 +137,7 @@ export default function Projects() {
       description: "A silly 3D game where cube people run for their lives while you practice your aim. Built with Cursor.",
       technologies: ["Three.js", "JavaScript"],
       links: {
-        github: "https://github.com/harrybarnish/village-blast",
+        github: "https://github.com/HarryB05/village-blaster",
         play: "https://harryb05.github.io/village-blaster/"
       },
       status: "past"
@@ -149,7 +149,7 @@ export default function Projects() {
       description: "Designed and implemented a Java-based Horse Race Simulator. Featured multithreaded race execution for parallel processing and performance. Incorporated dynamic event handling to address real-time race conditions.",
       technologies: ["Java", "Swing"],
       links: {
-        github: "https://github.com/harrybarnish/horse-racing-simulator"
+        github: "https://github.com/HarryB05/horse-racing-simulator"
       },
       status: "past"
     },
@@ -160,7 +160,7 @@ export default function Projects() {
       description: "My personal portfolio website showcasing my projects and experience.",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       links: {
-        github: "https://github.com/harrybarnish/portfolio"
+        github: "https://github.com/HarryB05/portfolio"
       },
       status: "past"
     }

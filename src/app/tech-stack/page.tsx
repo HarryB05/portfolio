@@ -32,31 +32,50 @@ export default function TechStack() {
     },
   };
 
+  // Calculate years of experience from start year
+  const calculateYears = (startYear: string): number => {
+    const currentYear = 2025;
+    const start = parseInt(startYear);
+    return Math.max(1, currentYear - start);
+  };
+
+  // Calculate progress percentage (max 8 years = 100%)
+  const calculateProgress = (years: number): number => {
+    const maxYears = 8;
+    return Math.min(100, (years / maxYears) * 100);
+  };
+
+  // Format years text
+  const formatYears = (years: number): string => {
+    return `${years}+ years`;
+  };
+
   const techCategories = [
     {
       title: "Languages",
       items: [
+        { name: "Python", years: "2017" },
         { name: "HTML5", years: "2018" },
         { name: "CSS3", years: "2018" },
-        { name: "JavaScript", years: "2024" },
-        { name: "PHP", years: "2025" },
-        { name: "TypeScript", years: "2025" },
-        { name: "Java", years: "2024" },
-        { name: "Python", years: "2017" },
         { name: "C", years: "2022" },
         { name: "C++", years: "2022" },
+        { name: "SQL", years: "2023" },
+        { name: "JavaScript", years: "2024" },
+        { name: "Java", years: "2024" },
         { name: "Bash", years: "2024" },
+        { name: "PHP", years: "2025" },
+        { name: "TypeScript", years: "2025" },
       ],
     },
     {
       title: "Frameworks & Libraries",
       items: [
+        { name: "FastAPI", years: "2023" },
+        { name: "Flask", years: "2023" },
         { name: "ReactJS", years: "2025" },
         { name: "NextJS", years: "2025" },
         { name: "Electron", years: "2025" },
         { name: "Tailwind CSS", years: "2025" },
-        { name: "FastAPI", years: "2023" },
-        { name: "Flask", years: "2023" },
         { name: "SQLAlchemy", years: "2025" },
         { name: "Java Swing", years: "2025" },
       ],
@@ -67,10 +86,10 @@ export default function TechStack() {
         { name: "Git", years: "2019" },
         { name: "GitHub", years: "2019" },
         { name: "Linux", years: "2022" },
-        { name: "pnpm", years: "2025" },
-        { name: "npm", years: "2025" },
         { name: "Docker", years: "2023" },
         { name: "Docker Compose", years: "2023" },
+        { name: "pnpm", years: "2025" },
+        { name: "npm", years: "2025" },
       ],
     },
     {
@@ -105,14 +124,15 @@ export default function TechStack() {
 
       {/* Main Content */}
       <main className="pt-20 sm:pt-24 px-4 sm:px-6 pb-16 sm:pb-20">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-6xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0.8, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.4 }}
+            className="text-center mb-12 sm:mb-16"
+          >
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground font-playfair"
             >
@@ -130,7 +150,12 @@ export default function TechStack() {
             {techCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
-                variants={itemVariants}
+                initial={{ opacity: 0.7, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  duration: 0.3,
+                }}
                 className="relative"
               >
                 {/* Category Header */}
@@ -141,29 +166,51 @@ export default function TechStack() {
                   <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
                 </div>
 
-                {/* Tech Items Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-                  {category.items.map((item, itemIndex) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0.7, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.2,
-                        delay: (categoryIndex * 0.02) + (itemIndex * 0.01),
-                      }}
-                      className="bg-card/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-border/50 hover:border-primary/30 transition-all duration-300"
-                    >
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-base sm:text-lg font-semibold text-foreground font-merriweather leading-tight">
-                          {item.name}
-                        </h3>
-                      </div>
-                      <p className="text-xs sm:text-sm text-foreground/60 font-merriweather mt-1">
-                        Since {item.years}
-                      </p>
-                    </motion.div>
-                  ))}
+                {/* Tech Items List with Progress Bars */}
+                <div className="space-y-4 sm:space-y-5">
+                  {category.items.map((item, itemIndex) => {
+                    const years = calculateYears(item.years);
+                    const progress = calculateProgress(years);
+                    const yearsText = formatYears(years);
+
+                    return (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0.7, y: 5 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{
+                          duration: 0.2,
+                          delay: (categoryIndex * 0.02) + (itemIndex * 0.01),
+                        }}
+                        className="w-full"
+                      >
+                        {/* Tech Name and Years */}
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="text-base sm:text-lg font-semibold text-foreground font-merriweather">
+                            {item.name}
+                          </h3>
+                          <p className="text-sm sm:text-base text-foreground/70 font-merriweather">
+                            {yearsText}
+                          </p>
+                        </div>
+                        {/* Progress Bar */}
+                        <div className="w-full h-2 sm:h-2.5 bg-muted/30 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${progress}%` }}
+                            viewport={{ once: false, amount: 0.3 }}
+                            transition={{
+                              duration: 0.8,
+                              delay: (categoryIndex * 0.02) + (itemIndex * 0.01) + 0.2,
+                              ease: "easeOut",
+                            }}
+                            className="h-full bg-primary rounded-full"
+                          />
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </motion.div>
             ))}
@@ -171,14 +218,17 @@ export default function TechStack() {
 
           {/* Summary Section */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0.7, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.3 }}
             className="mt-12 sm:mt-16 text-center px-4"
           >
             <p className="text-sm sm:text-base text-foreground/80 font-merriweather">
               This list highlights my main technologies and tools, but is not exhaustive.
             </p>
           </motion.div>
-        </motion.div>
+        </div>
       </main>
 
       <Footer />

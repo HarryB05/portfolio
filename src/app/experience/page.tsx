@@ -26,10 +26,16 @@ interface BaseRole {
   link?: string;
 }
 
+interface CoFounder {
+  name: string;
+  link: string;
+}
+
 interface SingleRole extends BaseRole {
   role: string;
   description: string;
   technologies?: string[];
+  coFounders?: CoFounder[];
 }
 
 interface MultiPositionRole extends BaseRole {
@@ -101,9 +107,13 @@ export default function Experience() {
         period: "Apr 2025 - Present",
         type: "Startup",
         companyDescription: "A startup focused on revolutionizing the internship application process by providing students and job seekers with comprehensive tools to track applications, manage interviews, and visualize their career progress.",
-        description: "Co-founder of LucidTrack, an all-in-one platform for managing internship applications, interviews, and deadlines. LucidTrack helps students and job seekers track their applications, schedule interviews, set deadline reminders, and visualize their progress with analytics. The platform features a collaborative dashboard, powerful search, and sharing tools to streamline the internship search process. Launching August 2025.",
+        description: "Built a full-stack SaaS platform using Next.js, TypeScript, and Supabase that helps university students efficiently track internship and graduate scheme applications. With 500+ applications tracked across 50+ users in the first 4 weeks of deployment. The platform includes analytics, deadline management, and a clean, intuitive interface.\n\nDeveloped and published a Chrome extension for one-click job application tracking, allowing users to capture postings directly from LinkedIn, Indeed, and company career sites with automatic data extraction.\n\nCurrently applying for funding from Q-Incubator to scale LucidTrack's product development, growth, and platform reliability.",
         link: "https://lucidtrack.dev",
-        technologies: ["React", "Next.js", "Supabase", "Vercel", "Tailwind CSS"]
+        technologies: ["React", "Next.js", "Supabase", "Vercel", "Tailwind CSS"],
+        coFounders: [
+          { name: "Bernard Lee", link: "https://bernardlee.co.uk" },
+          { name: "Nicole Kirk", link: "https://nicolekirk.io" }
+        ]
       },
       {
         company: "Hyperlink London",
@@ -281,9 +291,11 @@ export default function Experience() {
                                 <h4 className="text-base sm:text-lg font-semibold text-foreground font-playfair">{position.role}</h4>
                                 <p className="text-xs sm:text-sm text-foreground/60 font-merriweather">{position.period}</p>
                               </div>
-                              <p className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-3">
-                                {position.description}
-                              </p>
+                              <div className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-3 space-y-3">
+                                {position.description.split('\n\n').map((paragraph, idx) => (
+                                  <p key={idx}>{paragraph}</p>
+                                ))}
+                              </div>
                               {position.technologies && (
                                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
                                   {position.technologies.map((tech: string) => (
@@ -306,9 +318,11 @@ export default function Experience() {
                             <h4 className="text-base sm:text-lg font-semibold text-foreground font-playfair">{role.role}</h4>
                             <p className="text-xs sm:text-sm text-foreground/60 font-merriweather">{role.period}</p>
                           </div>
-                          <p className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-4">
-                            {role.description}
-                          </p>
+                          <div className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-4 space-y-3">
+                            {role.description.split('\n\n').map((paragraph, idx) => (
+                              <p key={idx}>{paragraph}</p>
+                            ))}
+                          </div>
                           {role.technologies && (
                             <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
                               {role.technologies.map((tech: string) => (
@@ -319,6 +333,26 @@ export default function Experience() {
                                   {tech}
                                 </span>
                               ))}
+                            </div>
+                          )}
+                          {role.coFounders && role.coFounders.length > 0 && (
+                            <div className="mb-4 pt-4 border-t border-border/30">
+                              <p className="text-xs sm:text-sm text-foreground/60 font-merriweather mb-2">
+                                Co-founders:
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {role.coFounders.map((founder) => (
+                                  <a
+                                    key={founder.name}
+                                    href={founder.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-primary hover:text-primary/80 transition-colors font-merriweather text-sm"
+                                  >
+                                    {founder.name}
+                                  </a>
+                                ))}
+                              </div>
                             </div>
                           )}
                         </div>
@@ -417,9 +451,11 @@ export default function Experience() {
                                 <h4 className="text-base sm:text-lg font-semibold text-foreground font-playfair">{position.role}</h4>
                                 <p className="text-xs sm:text-sm text-foreground/60 font-merriweather">{position.period}</p>
                               </div>
-                              <p className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-3">
-                                {position.description}
-                              </p>
+                              <div className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-3 space-y-3">
+                                {position.description.split('\n\n').map((paragraph, idx) => (
+                                  <p key={idx}>{paragraph}</p>
+                                ))}
+                              </div>
                               {position.technologies && (
                                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
                                   {position.technologies.map((tech: string) => (
@@ -442,9 +478,11 @@ export default function Experience() {
                             <h4 className="text-base sm:text-lg font-semibold text-foreground font-playfair">{role.role}</h4>
                             <p className="text-xs sm:text-sm text-foreground/60 font-merriweather">{role.period}</p>
                           </div>
-                          <p className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-4">
-                            {role.description}
-                          </p>
+                          <div className="text-sm sm:text-base text-foreground/80 font-merriweather leading-relaxed mb-4 space-y-3">
+                            {role.description.split('\n\n').map((paragraph, idx) => (
+                              <p key={idx}>{paragraph}</p>
+                            ))}
+                          </div>
                           {role.technologies && (
                             <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
                               {role.technologies.map((tech: string) => (
@@ -455,6 +493,26 @@ export default function Experience() {
                                   {tech}
                                 </span>
                               ))}
+                            </div>
+                          )}
+                          {role.coFounders && role.coFounders.length > 0 && (
+                            <div className="mb-4 pt-4 border-t border-border/20">
+                              <p className="text-xs sm:text-sm text-foreground/60 font-merriweather mb-2">
+                                Co-founders:
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {role.coFounders.map((founder) => (
+                                  <a
+                                    key={founder.name}
+                                    href={founder.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-primary hover:text-primary/80 transition-colors font-merriweather text-sm"
+                                  >
+                                    {founder.name}
+                                  </a>
+                                ))}
+                              </div>
                             </div>
                           )}
                         </div>
