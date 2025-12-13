@@ -53,7 +53,11 @@ export default function Projects() {
       collaborators: [
         {
           name: "Bernard Lee",
-          github: "https://github.com/Bernard-LTW"
+          github: "https://bernardlee.co.uk"
+        },
+        {
+          name: "Nicole Kirk",
+          github: "https://nicolekirk.io"
         }
       ],
       carousel: [
@@ -107,7 +111,7 @@ export default function Projects() {
       collaborators: [
         {
           name: "Bernard Lee",
-          github: "https://github.com/Bernard-LTW"
+          github: "https://bernardlee.co.uk"
         }
       ]
     },
