@@ -102,16 +102,20 @@ export default function Projects() {
       ]
     },
     {
-      id: "student-welfare",
-      title: "Student Welfare System",
-      period: "05/2025 - Present",
-      description: "I am currently building a student welfare system for boarding school students.",
-      technologies: ["Supabase", "Next.js", "Tailwind CSS"],
-      status: "current",
-      collaborators: [
+      id: "grades-trackr",
+      title: "University Grades Tracker",
+      period: "12/2025",
+      description: "A web application for tracking university grades across different modules and calculating weighted averages. Features include semester and year breakdowns, module grade tracking, and comprehensive statistics.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      links: {
+        github: "https://github.com/HarryB05/grades-trackr"
+      },
+      status: "past",
+      carousel: [
         {
-          name: "Bernard Lee",
-          github: "https://bernardlee.co.uk"
+          light: "/projects/grades_trackr/grades_trackr_light.jpeg",
+          dark: "/projects/grades_trackr/grades_trackr_dark.jpeg",
+          alt: "University Grades Tracker Dashboard"
         }
       ]
     },
