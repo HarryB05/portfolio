@@ -105,7 +105,7 @@ export default function Projects() {
     {
       id: "record-linkage",
       title: "Record Linkage and Entity Resolution",
-      period: "12/2025",
+      period: "12/2025 - Present",
       description: "A writeup of a project I developed for LucidTrack, addressing the challenge of duplicate job application entries created by hundreds of users independently saving the same opportunities. The solution combines application grouping algorithms with company entity assignment, utilising fuzzy matching and semantic embedding techniques to identify duplicates and normalise company data into a coherent jobs board.",
       technologies: ["Data Science", "Entity Resolution", "Fuzzy Matching", "Semantic Embeddings"],
       links: {
