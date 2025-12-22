@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Play } from "lucide-react";
+import { Github, ExternalLink, Play, Download } from "lucide-react";
 import { useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -24,6 +24,7 @@ interface Project {
     github?: string;
     website?: string;
     play?: string;
+    pdf?: string;
   };
   status: "current" | "past";
   image?: string;
@@ -100,6 +101,17 @@ export default function Projects() {
           alt: "Estate Management System Dashboard"
         }
       ]
+    },
+    {
+      id: "record-linkage",
+      title: "Record Linkage and Entity Resolution",
+      period: "2024",
+      description: "A writeup of a project I developed for LucidTrack, addressing the challenge of duplicate job application entries created by hundreds of users independently saving the same opportunities. The solution combines application grouping algorithms with company entity assignment, utilising fuzzy matching and semantic embedding techniques to identify duplicates and normalise company data into a coherent jobs board.",
+      technologies: ["Data Science", "Entity Resolution", "Fuzzy Matching", "Semantic Embeddings"],
+      links: {
+        pdf: "/pdfs/Record Linkage and Entity Resolution.pdf"
+      },
+      status: "current"
     },
     {
       id: "grades-trackr",
@@ -310,6 +322,29 @@ export default function Projects() {
                 <span>Play Game</span>
                 <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
               </a>
+            )}
+            {project.links.pdf && (
+              <>
+                <a
+                  href={project.links.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>View PDF</span>
+                  <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+                <a
+                  href={project.links.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>Download PDF</span>
+                  <Download className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              </>
             )}
           </div>
         )}
