@@ -36,11 +36,6 @@ export default function Footer() {
         <p className="text-foreground/60 text-sm font-merriweather">
           Built by Harry Barnish
         </p>
-        {lastUpdated && (
-          <p className="text-foreground/50 text-xs font-merriweather">
-            Last updated: {lastUpdated}
-          </p>
-        )}
         <div className="flex justify-center items-center gap-4">
           {socialLinks.map((social) => (
             <a
@@ -55,6 +50,11 @@ export default function Footer() {
             </a>
           ))}
         </div>
+        {lastUpdated && (
+          <p className="text-foreground/50 text-xs font-merriweather">
+            Last updated: {lastUpdated}
+          </p>
+        )}
       </div>
     </footer>
   );
