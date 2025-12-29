@@ -1,0 +1,253 @@
+{
+  "education": {
+    "undergrad": [
+      {
+        "institution": "Queen Mary University of London",
+        "logo": "/logos/qmul_logo.png",
+        "period": "Sep 2024 - Present",
+        "type": "Undergraduate",
+        "degree": "BSc Honours Computer Science and Management",
+        "courses": [
+          {
+            "name": "BUS001 - Fundamentals of Management",
+            "period": "Year 1",
+            "grade": "2:1",
+            "mark": 62.2
+          },
+          {
+            "name": "BUS017 - Economics for Business",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 84.9
+          },
+          {
+            "name": "ECS401U - Procedural Programming",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 82.0
+          },
+          {
+            "name": "ECS404U - Computer Systems and Networks",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 73.3
+          },
+          {
+            "name": "ECS414U - Object-Oriented Programming",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 98.6
+          },
+          {
+            "name": "ECS417U - Fundamentals of Web Technology",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 76.2
+          },
+          {
+            "name": "ECS419U - Information System Analysis",
+            "period": "Year 1",
+            "grade": "1st",
+            "mark": 85.0
+          },
+          {
+            "name": "ECS427U - Professional and Research Practice",
+            "period": "Year 1",
+            "grade": "2:1",
+            "mark": 69.0
+          },
+          {
+            "name": "BUS283 - Financial Markets and Securities",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS505U - Software Engineering",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS519U - Database Systems",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS529U - Algorithms and Data Structures",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "BUS280 - Introduction to Marketing and Communications",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS506U - Software Engineering Project",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS518U - Operating Systems",
+            "period": "Year 2",
+            "grade": "TBC"
+          },
+          {
+            "name": "ECS524U - Internet Protocols and Applications",
+            "period": "Year 2",
+            "grade": "TBC"
+          }
+        ]
+      }
+    ],
+    "highSchool": [
+      {
+        "institution": "Cherwell College Oxford",
+        "logo": "/logos/CHERWELL-COLLEGE-OXFORD-LOGO.png",
+        "period": "Sep 2018 - Jun 2023",
+        "type": "High School",
+        "degree": "A-Levels",
+        "courses": [
+          {
+            "name": "Computer Science",
+            "period": "A-Level",
+            "grade": "A*"
+          },
+          {
+            "name": "Economics",
+            "period": "A-Level",
+            "grade": "A"
+          },
+          {
+            "name": "Mathematics",
+            "period": "A-Level",
+            "grade": "B"
+          },
+          {
+            "name": "Physics",
+            "period": "A-Level",
+            "grade": "B"
+          }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "currentRoles": [
+      {
+        "company": "Queen Mary University of London",
+        "logo": "/logos/qmul_logo.png",
+        "period": "Sep 2025 - Present",
+        "type": "Part-Time",
+        "positions": [
+          {
+            "role": "Object Orientated Programming Lab Demonstrator",
+            "period": "Jan 2026 - Present",
+            "description": "Providing front-line support for student learning in object-oriented programming by helping students overcome difficulties with OOP concepts and implementation, supporting laboratory work and formative exercises, marking coursework and in-class assessments, and providing individual feedback on student work."
+          },
+          {
+            "role": "Computer Systems and Networks Lab Demonstrator",
+            "period": "Sep 2025 - Dec 2025",
+            "description": "Supported a cohort of 250 students in overcoming challenges with course material, assisted in completing laboratory work and formative exercises, and contributed to marking 50 coursework and in-class assessments."
+          }
+        ]
+      },
+      {
+        "company": "LucidTrack",
+        "logo": "/logos/lucidtrack_logo.png",
+        "role": "Co-founder",
+        "period": "Apr 2025 - Present",
+        "type": "Startup",
+        "companyDescription": "A startup focused on revolutionising the internship application process by providing students and job seekers with comprehensive tools to track applications, manage interviews, and visualise their career progress.",
+        "description": "Built a full-stack SaaS platform using Next.js, TypeScript, and Supabase, enabling 100+ university students to track over 600 internship and graduate scheme applications with analytics and deadline management.\n\nCreated and published a Chrome extension for seamless job application tracking, allowing over 50 students to capture job postings directly from LinkedIn, Indeed, and company career sites.\n\nEngineered a machine-learning framework for large scale data cleansing and entity resolution, leveraging fuzzy matching algorithms and transformer-based semantic embeddings to identify duplicates, reconcile inconsistencies, and perform high-confidence entity matching through multi-stage, AI-enhanced similarity analysis.",
+        "link": "https://lucidtrack.dev",
+        "technologies": ["React", "Next.js", "Supabase", "Vercel", "Tailwind CSS"],
+        "coFounders": [
+          {
+            "name": "Bernard Lee",
+            "link": "https://bernardlee.co.uk"
+          },
+          {
+            "name": "Nicole Kirk",
+            "link": "https://nicolekirk.io"
+          }
+        ]
+      },
+      {
+        "company": "Hyperlink London",
+        "logo": "/logos/hyperlink_logo.jpeg",
+        "period": "Sep 2024 - Present",
+        "type": "Student Society",
+        "companyDescription": "A student-led engineering society at Queen Mary University of London building London's first fully operational Hyperloop pod prototype. The team focuses on developing financially feasible, scalable Hyperloop technology while researching social sustainability, safety systems, and community integration to bring Hyperloop implementation closer to reality in Europe.",
+        "link": "https://www.hyperlinklondon.com",
+        "positions": [
+          {
+            "role": "Head of Electrical & Treasurer",
+            "period": "Sep 2025 - Present",
+            "description": "Leading electrical systems and financial management for Hyperlink London's IoT projects.",
+            "technologies": ["IoT", "Electrical Systems", "Financial Management"]
+          },
+          {
+            "role": "Head of Software",
+            "period": "Sep 2024 - Aug 2025",
+            "description": "Managed a team of 10 people to develop a modular end-to-end IoT system at Hyperlink, integrating ESP32-based embedded sensors with a local backend infrastructure. Designed and implemented a finite state machine (FSM) architecture to govern sensor behaviour and edge decision-making. Built a FastAPI-based RESTful API connected to a PostgreSQL database via SQLModel, supporting asynchronous data collection and structured storage. Utilised Docker to containerise backend services for consistent local deployment. Additionally, developed a real-time user interface using Electron to visualise and interact with live sensor data.",
+            "technologies": ["Python", "FastAPI", "PostgreSQL", "Docker", "ESP32", "Electron", "IoT"]
+          }
+        ]
+      }
+    ],
+    "previousEmployment": [
+      {
+        "company": "CyanoCapture",
+        "logo": "/logos/cyanocapture_light_logo.png",
+        "darkLogo": "/logos/cyanocapture_dark_logo.png",
+        "period": "Jan 2023 - Aug 2024",
+        "type": "Full-Time",
+        "companyDescription": "A pioneering climate tech company that won Elon Musk's XPRIZE 2021 and Shell New Energy Challenge 2023 for their revolutionary photosynthetic biomanufacturing platform. CyanoCapture uses genetically engineered cyanobacteria to synthesize high-value compounds directly from CO2 and sunlight.",
+        "link": "https://www.cyanocapture.com",
+        "positions": [
+          {
+            "role": "Software Engineer",
+            "period": "Sep 2023 - Aug 2024",
+            "description": "Developed job specifications, tendered, recruited, and managed a team of 2 software engineers over 10 weeks to deliver a consultancy project valued at £10,000. Contracted and managed a web designer to rebrand company materials, redesign the website, and create PowerPoint templates, ensuring alignment with company ethos and values for a budget of £2,500. Created a data analytics system using C++, Python and SQL that aggregated 1.5 million data points daily from lab experiments, enabling scientists to analyse live data and optimising bioprocesses through PCB designs for cyanobacterial strain quantification. Showcased work at WebSummit 2023 in Lisbon, attended by 70,000 participants, engaging with business leaders and startup founders during Shell-hosted networking event to attract potential investors. Delivered training to 10 non-technical staff members on GitHub, enhancing project tracking, planning, management, and contributions to software projects across the company.",
+            "technologies": ["Python", "C++", "SQL", "GitHub", "PCB Design"]
+          },
+          {
+            "role": "Software Engineer Summer Intern",
+            "period": "Aug 2023 - Sep 2023",
+            "description": "Collaborated with a contractor to analyse company needs and R&D requirements, designing an in-house software development structure that improved cost-efficiency by 25%. Co-developed an innovative solution to replace expensive incubators, resulting in cost savings of over £40,000 for the company.",
+            "technologies": ["Python", "Software Development"]
+          },
+          {
+            "role": "Software Engineer Intern",
+            "period": "Jan 2023 - May 2023",
+            "description": "Executed small mechatronics projects to support R&D, collaborating with 4 researchers and contributing to the completion of 2 lab experiments that enhanced project outcomes.",
+            "technologies": ["Python", "Mechatronics"]
+          }
+        ]
+      }
+    ],
+    "volunteering": [
+      {
+        "organization": "NHS England",
+        "logo": "/logos/nhs_logo.png",
+        "role": "Expert by Experience",
+        "period": "Aug 2024 - Present",
+        "description": "Providing expert insights and feedback to improve NHS services and patient experience."
+      },
+      {
+        "organization": "NHS Blood and Transplant",
+        "logo": "/logos/nhs_blood_logo.png",
+        "role": "Platelet donor",
+        "period": "Feb 2023 - Present"
+      },
+      {
+        "organization": "The Oxbridge Foundation",
+        "logo": "/logos/oxbridge_foundation_logo.png",
+        "role": "Charity Work",
+        "period": "Feb 2022",
+        "description": "Volunteering and charity work to support educational initiatives."
+      }
+    ]
+  }
+}
+

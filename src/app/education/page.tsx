@@ -7,6 +7,7 @@ import { BookOpen, Calendar, ChevronDown, ChevronUp, ExternalLink, GraduationCap
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ThemeAwareLogo from "@/components/ThemeAwareLogo";
+import educationAndExperienceData from "@/data/education-and-experience.json";
 
 // TypeScript interfaces for education data
 interface Course {
@@ -115,138 +116,7 @@ export default function Education() {
     },
   };
 
-  const educationData: EducationData = {
-    undergrad: [
-      {
-        institution: "Queen Mary University of London",
-        logo: "/logos/qmul_logo.png",
-        period: "Sep 2024 - Present",
-        type: "Undergraduate",
-        degree: "BSc Honours Computer Science and Management",
-        courses: [
-          {
-            name: "BUS001 - Fundamentals of Management",
-            period: "Year 1",
-            grade: "2:1",
-            mark: 62.2,
-          },
-          {
-            name: "BUS017 - Economics for Business",
-            period: "Year 1",
-            grade: "1st",
-            mark: 84.9,
-          },
-          {
-            name: "ECS401U - Procedural Programming",
-            period: "Year 1",
-            grade: "1st",
-            mark: 82.0,
-          },
-          {
-            name: "ECS404U - Computer Systems and Networks",
-            period: "Year 1",
-            grade: "1st",
-            mark: 73.3,
-          },
-          {
-            name: "ECS414U - Object-Oriented Programming",
-            period: "Year 1",
-            grade: "1st",
-            mark: 98.6,
-          },
-          {
-            name: "ECS417U - Fundamentals of Web Technology",
-            period: "Year 1",
-            grade: "1st",
-            mark: 76.2,
-          },
-          {
-            name: "ECS419U - Information System Analysis",
-            period: "Year 1",
-            grade: "1st",
-            mark: 85.0,
-          },
-          {
-            name: "ECS427U - Professional and Research Practice",
-            period: "Year 1",
-            grade: "2:1",
-            mark: 69.0,
-          },
-          {
-            name: "BUS283 - Financial Markets and Securities",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS505U - Software Engineering",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS519U - Database Systems",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS529U - Algorithms and Data Structures",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "BUS280 - Introduction to Marketing and Communications",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS506U - Software Engineering Project",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS518U - Operating Systems",
-            period: "Year 2",
-            grade: "TBC",
-          },
-          {
-            name: "ECS524U - Internet Protocols and Applications",
-            period: "Year 2",
-            grade: "TBC",
-          },
-        ],
-      },
-    ],
-    highSchool: [
-      {
-        institution: "Cherwell College Oxford",
-        logo: "/logos/CHERWELL-COLLEGE-OXFORD-LOGO.png",
-        period: "Sep 2018 - Jun 2023",
-        type: "High School",
-        degree: "A-Levels",
-        courses: [
-          {
-            name: "Computer Science",
-            period: "A-Level",
-            grade: "A*",
-          },
-          {
-            name: "Economics",
-            period: "A-Level",
-            grade: "A",
-          },
-          {
-            name: "Mathematics",
-            period: "A-Level",
-            grade: "B",
-          },
-          {
-            name: "Physics",
-            period: "A-Level",
-            grade: "B",
-          },
-        ],
-      },
-    ],
-  };
+  const educationData: EducationData = educationAndExperienceData.education;
 
   return (
     <div className="min-h-screen bg-background">

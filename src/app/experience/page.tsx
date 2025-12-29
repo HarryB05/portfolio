@@ -7,6 +7,7 @@ import { Calendar, ExternalLink, Building2, Heart } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ThemeAwareLogo from "@/components/ThemeAwareLogo";
+import educationAndExperienceData from "@/data/education-and-experience.json";
 
 // TypeScript interfaces for experience data
 interface Position {
@@ -90,108 +91,7 @@ export default function Experience() {
     return 'positions' in role;
   };
 
-  const experienceData: ExperienceData = {
-    currentRoles: [
-      {
-        company: "Queen Mary University of London",
-        logo: "/logos/qmul_logo.png",
-        role: "Computer Systems and Networks Demonstrator",
-        period: " Sep 2025 - Present",
-        type: "Part-Time",
-        description: "Providing front-line support for student learning by helping students overcome difficulties with course material, supporting laboratory work and formative exercises, providing individual feedback on student work, and assisting with marking coursework and in-class assessments.",
-      },
-      {
-        company: "LucidTrack",
-        logo: "/logos/lucidtrack_logo.png",
-        role: "Co-founder",
-        period: "Apr 2025 - Present",
-        type: "Startup",
-        companyDescription: "A startup focused on revolutionizing the internship application process by providing students and job seekers with comprehensive tools to track applications, manage interviews, and visualize their career progress.",
-        description: "Built a full-stack SaaS platform using Next.js, TypeScript, and Supabase that helps university students efficiently track internship and graduate scheme applications. With 500+ applications tracked across 50+ users in the first 4 weeks of deployment. The platform includes analytics, deadline management, and a clean, intuitive interface.\n\nDeveloped and published a Chrome extension for one-click job application tracking, allowing users to capture postings directly from LinkedIn, Indeed, and company career sites with automatic data extraction.\n\nCurrently applying for funding from Q-Incubator to scale LucidTrack's product development, growth, and platform reliability.",
-        link: "https://lucidtrack.dev",
-        technologies: ["React", "Next.js", "Supabase", "Vercel", "Tailwind CSS"],
-        coFounders: [
-          { name: "Bernard Lee", link: "https://bernardlee.co.uk" },
-          { name: "Nicole Kirk", link: "https://nicolekirk.io" }
-        ]
-      },
-      {
-        company: "Hyperlink London",
-        logo: "/logos/hyperlink_logo.jpeg",
-        period: "Sep 2024 - Present",
-        type: "Student Society",
-        companyDescription: "A student-led engineering society at Queen Mary University of London building London's first fully operational Hyperloop pod prototype. The team focuses on developing financially feasible, scalable Hyperloop technology while researching social sustainability, safety systems, and community integration to bring Hyperloop implementation closer to reality in Europe.",
-        link: "https://www.hyperlinklondon.com",
-        positions: [
-          {
-            role: "Head of Electrical & Treasurer",
-            period: "Sep 2025 - Present",
-            description: "Leading electrical systems and financial management for Hyperlink London's IoT projects.",
-            technologies: ["IoT", "Electrical Systems", "Financial Management"]
-          },
-          {
-            role: "Head of Software",
-            period: "Sep 2024 - Aug 2025",
-            description: "Managed a team of 10 people to develop a modular end-to-end IoT system at Hyperlink, integrating ESP32-based embedded sensors with a local backend infrastructure. Designed and implemented a finite state machine (FSM) architecture to govern sensor behaviour and edge decision-making. Built a FastAPI-based RESTful API connected to a PostgreSQL database via SQLModel, supporting asynchronous data collection and structured storage. Utilised Docker to containerise backend services for consistent local deployment. Additionally, developed a real-time user interface using Electron to visualise and interact with live sensor data.",
-            technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "ESP32", "Electron", "IoT"]
-          }
-        ]
-      }
-    ],
-    previousEmployment: [
-      {
-        company: "CyanoCapture",
-        logo: "/logos/cyanocapture_light_logo.png",
-        darkLogo: "/logos/cyanocapture_dark_logo.png",
-        period: "Jan 2023 - Aug 2024",
-        type: "Full-Time",
-        companyDescription: "A pioneering climate tech company that won Elon Musk's XPRIZE 2021 and Shell New Energy Challenge 2023 for their revolutionary photosynthetic biomanufacturing platform. CyanoCapture uses genetically engineered cyanobacteria to synthesize high-value compounds directly from CO2 and sunlight.",
-        link: "https://www.cyanocapture.com",
-        positions: [
-          {
-            role: "Software Engineer",
-            period: "Sep 2023 - Aug 2024",
-            description: "Managed the development of a cloud-native industrial IoT system engineered for real-time data processing and communication, leveraging MQTT for efficient data transmission, Docker for deployment portability, and an integrated Solara FastAPI stack for streamlined cloud-based IoT services. Deployed on Google Cloud Platform (GCP) to ensure scalability and reliability.",
-            technologies: ["Python", "FastAPI", "MQTT", "Docker", "GCP", "IoT", "Solara"]
-          },
-          {
-            role: "Software Engineer Summer Intern",
-            period: "Aug 2023 - Sep 2023",
-            description: "Summer internship focused on software development and IoT systems.",
-            technologies: ["Python", "IoT"]
-          },
-          {
-            role: "Software Engineer Intern",
-            period: "Jan 2023 - May 2023",
-            description: "Part-time internship in software engineering and development.",
-            technologies: ["Python", "IoT"]
-          }
-        ]
-      }
-    ],
-    volunteering: [
-      {
-        organization: "NHS England",
-        logo: "/logos/nhs_logo.png",
-        role: "Expert by Experience",
-        period: "Aug 2024 - Present",
-        description: "Providing expert insights and feedback to improve NHS services and patient experience."
-      },
-      {
-        organization: "NHS Blood and Transplant",
-        logo: "/logos/nhs_blood_logo.png",
-        role: "Platelet donor",
-        period: "Feb 2023 - Present",
-      },
-      {
-        organization: "The Oxbridge Foundation",
-        logo: "/logos/oxbridge_foundation_logo.png",
-        role: "Charity Work",
-        period: "Feb 2022",
-        description: "Volunteering and charity work to support educational initiatives."
-      }
-    ]
-  };
+  const experienceData: ExperienceData = educationAndExperienceData.experience;
 
   return (
     <div className="min-h-screen bg-background">

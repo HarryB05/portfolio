@@ -1,0 +1,179 @@
+{
+  "projects": [
+    {
+      "id": "lucidtrack",
+      "title": "LucidTrack",
+      "period": "05/2025 - Present",
+      "description": "LucidTrack is a modern web application designed to streamline the management of internship applications and their outcomes for students. It offers a customisable interface and gives a clear view into overall progress and performance of a students applications.",
+      "technologies": ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
+      "links": {
+        "website": "https://lucidtrack.dev"
+      },
+      "status": "current",
+      "collaborators": [
+        {
+          "name": "Bernard Lee",
+          "github": "https://bernardlee.co.uk"
+        },
+        {
+          "name": "Nicole Kirk",
+          "github": "https://nicolekirk.io"
+        }
+      ],
+      "carousel": [
+        {
+          "light": "/projects/lucidtrack/dashbord_light.jpeg",
+          "dark": "/projects/lucidtrack/dashbord_dark.jpeg",
+          "alt": "LucidTrack Dashboard"
+        },
+        {
+          "light": "/projects/lucidtrack/applications_id_light.jpeg",
+          "dark": "/projects/lucidtrack/application_id_dark.jpeg",
+          "alt": "Application Details"
+        },
+        {
+          "light": "/projects/lucidtrack/stats_light.jpeg",
+          "dark": "/projects/lucidtrack/stats_dark.jpeg",
+          "alt": "Statistics Overview"
+        },
+        {
+          "light": "/projects/lucidtrack/friends_light.jpeg",
+          "dark": "/projects/lucidtrack/friends_dark.jpeg",
+          "alt": "Friends Feature"
+        }
+      ]
+    },
+    {
+      "id": "estate-management",
+      "title": "Estate Management System",
+      "period": "04/2025",
+      "description": "EMS (Estate Management System) is an all-in-one platform centralising contact management, expense tracking, mileage and time logging, and estate inventory management. I made EMS to help my family manage their estate.",
+      "technologies": ["Supabase", "Next.js", "Tailwind CSS", "Vercel"],
+      "links": {
+        "github": "https://github.com/HarryB05/EMS"
+      },
+      "status": "past",
+      "carousel": [
+        {
+          "light": "/projects/EMS/EMS_light.jpeg",
+          "dark": "/projects/EMS/EMS_dark.jpeg",
+          "alt": "Estate Management System Dashboard"
+        }
+      ]
+    },
+    {
+      "id": "hanki",
+      "title": "Hanki",
+      "period": "12/2025",
+      "description": "A spaced repetition flashcard application built with Next.js. Study your flashcards with an intelligent algorithm that shows you difficult cards more often and easy cards less often. Features multiple decks, configurable settings, progress tracking, and CSV import functionality.",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "links": {
+        "github": "https://github.com/HarryB05/hanki"
+      },
+      "status": "past",
+      "carousel": [
+        {
+          "light": "/projects/hanki/hanki_light.png",
+          "dark": "/projects/hanki/hanki_dark.png",
+          "alt": "Hanki Flashcard Application"
+        }
+      ]
+    },
+    {
+      "id": "grades-trackr",
+      "title": "University Grades Tracker",
+      "period": "12/2025",
+      "description": "A web application for tracking university grades across different modules and calculating weighted averages. Features include semester and year breakdowns, module grade tracking, and comprehensive statistics.",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      "links": {
+        "github": "https://github.com/HarryB05/grades-trackr"
+      },
+      "status": "past",
+      "carousel": [
+        {
+          "light": "/projects/grades_trackr/grades_trackr_light.jpeg",
+          "dark": "/projects/grades_trackr/grades_trackr_dark.jpeg",
+          "alt": "University Grades Tracker Dashboard"
+        }
+      ]
+    },
+    {
+      "id": "merkle-tree",
+      "title": "Merkle Tree Implementation",
+      "period": "03/2025",
+      "description": "A Python implementation of a Merkle Tree for learning and experimentation.",
+      "technologies": ["Python"],
+      "links": {
+        "github": "https://github.com/HarryB05/merkle-tree"
+      },
+      "status": "past"
+    },
+    {
+      "id": "hyperloop-pod",
+      "title": "Hyperloop Pod Communications System",
+      "period": "09/2024 - 08/2025",
+      "description": "Asynchronus python application to coordinate communication between ESP32s, Dashboard, FSM (Finite State Machine). Non-blocking architechture with priortiy-based messaging from API calls.",
+      "technologies": ["Python", "FastAPI"],
+      "status": "past"
+    },
+    {
+      "id": "village-blast",
+      "title": "Village Blaster",
+      "period": "04/2025",
+      "description": "A silly 3D game where cube people run for their lives while you practice your aim. Built with Cursor.",
+      "technologies": ["Three.js", "JavaScript"],
+      "links": {
+        "github": "https://github.com/HarryB05/village-blaster",
+        "play": "https://harryb05.github.io/village-blaster/"
+      },
+      "status": "past"
+    },
+    {
+      "id": "horse-racing",
+      "title": "Horse Racing Simulator",
+      "period": "03/2025 - 04/2025",
+      "description": "Designed and implemented a Java-based Horse Race Simulator. Featured multithreaded race execution for parallel processing and performance. Incorporated dynamic event handling to address real-time race conditions.",
+      "technologies": ["Java", "Swing"],
+      "links": {
+        "github": "https://github.com/HarryB05/horse-racing-simulator"
+      },
+      "status": "past"
+    },
+    {
+      "id": "portfolio",
+      "title": "This Website",
+      "period": "03/2023 - Present",
+      "description": "My personal portfolio website showcasing my projects and experience.",
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "links": {
+        "github": "https://github.com/HarryB05/portfolio"
+      },
+      "status": "past"
+    }
+  ],
+  "literature": [
+    {
+      "id": "record-linkage",
+      "title": "Record Linkage and Entity Resolution",
+      "date": "12/2025",
+      "description": "A writeup of a project I developed for LucidTrack, addressing the challenge of duplicate job application entries created by hundreds of users independently saving the same opportunities. The solution combines application grouping algorithms with company entity assignment, utilising fuzzy matching and semantic embedding techniques to identify duplicates and normalise company data into a coherent jobs board.",
+      "type": "paper",
+      "tags": ["Data Science", "Entity Resolution", "Fuzzy Matching", "Semantic Embeddings"],
+      "links": {
+        "pdf": "/pdfs/Record Linkage and Entity Resolution.pdf"
+      }
+    },
+    {
+      "id": "making-of-lucidtrack",
+      "title": "The Making of LucidTrack: A Story of Desperation, Determination, and Actually Useful Software (And How You Can Use It to Win)",
+      "date": "11/2025",
+      "description": "A blog post about how LucidTrack was built, the problem it solves for students managing dozens of internship and grad scheme applications, and how to get the best experience out of the platform. Covers the journey from Excel spreadsheets to a fully-featured application tracking system built by students, for students.",
+      "type": "blog",
+      "tags": ["LucidTrack", "Startup", "Product Development", "Student Tools"],
+      "links": {
+        "website": "https://lucidtrack.dev/blog/the-making-of-lucidtrack-a-story-of-desperation-determination-and-actually-useful-software-and-how-you-can-use-it-to-win"
+      }
+    }
+  ]
+}
+

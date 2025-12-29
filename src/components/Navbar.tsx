@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, Home, Briefcase, Code, Layers, GraduationCap } from "lucide-react";
+import { Menu, X, Home, Briefcase, Code, Layers, GraduationCap, FileText } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
@@ -21,6 +21,7 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
     { name: "Experience", href: "/experience", icon: Briefcase },
     { name: "Education", href: "/education", icon: GraduationCap },
     { name: "Projects", href: "/projects", icon: Code },
+    { name: "Literature", href: "/literature", icon: FileText },
     { name: "Tech Stack", href: "/tech-stack", icon: Layers }
   ];
 
@@ -324,6 +325,26 @@ export default function Navbar({ variant = "default" }: NavbarProps) {
                   `}
                 >
                   <GraduationCap className="h-4 w-4" />
+                </motion.div>
+              </Link>
+
+              <Link href="/literature">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`
+                    p-2 rounded-full transition-colors
+                    ${isActive("/literature")
+                      ? variant === "light"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-primary/20 text-primary"
+                      : variant === "light"
+                        ? "text-gray-600 hover:bg-orange-50"
+                        : "text-foreground/70 hover:bg-orange-500/10"
+                    }
+                  `}
+                >
+                  <FileText className="h-4 w-4" />
                 </motion.div>
               </Link>
 
