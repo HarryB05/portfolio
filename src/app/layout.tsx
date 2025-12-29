@@ -34,20 +34,11 @@ export const metadata: Metadata = {
     title: "Harry Barnish",
     description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
     siteName: "Harry Barnish Portfolio",
-    images: [
-      {
-        url: '/opengraph.png',
-        width: 1200,
-        height: 630,
-        alt: 'Harry Barnish',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Harry Barnish",
     description: "Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.",
-    images: ['/opengraph.png'],
     creator: '@harrybarnish',
   },
   robots: {

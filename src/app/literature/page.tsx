@@ -217,7 +217,7 @@ export default function Literature() {
               Literature
             </h1>
             <p className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-merriweather px-4">
-              Research papers, blog posts, and articles I've written.
+              Research papers, blog posts, and articles.
             </p>
           </motion.div>
 
