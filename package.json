@@ -2,11 +2,14 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "lastUpdated": "2025-12-29",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update-last-updated": "node scripts/update-last-updated.js",
+    "prepare": "node scripts/setup-git-hooks.js"
   },
   "dependencies": {
     "@next/font": "^14.2.15",

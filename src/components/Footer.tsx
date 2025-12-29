@@ -1,5 +1,6 @@
 import { Github } from "lucide-react";
 import LinkedInIcon from "./LinkedInIcon";
+import packageJson from "../../package.json";
 
 export default function Footer() {
   const socialLinks = [
@@ -15,12 +16,31 @@ export default function Footer() {
     },
   ];
 
+  // Format the last updated date
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  const lastUpdated = packageJson.lastUpdated
+    ? formatDate(packageJson.lastUpdated)
+    : null;
+
   return (
     <footer className="w-full py-6 text-center bg-background/90 backdrop-blur-sm">
       <div className="flex flex-col items-center gap-4">
         <p className="text-foreground/60 text-sm font-merriweather">
           Built by Harry Barnish
         </p>
+        {lastUpdated && (
+          <p className="text-foreground/50 text-xs font-merriweather">
+            Last updated: {lastUpdated}
+          </p>
+        )}
         <div className="flex justify-center items-center gap-4">
           {socialLinks.map((social) => (
             <a
