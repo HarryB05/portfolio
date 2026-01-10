@@ -3,7 +3,6 @@ package-lock.json
 pnpm-lock.yaml
 
 # Development files
-scripts/
 *.md
 !README.md
 wrangler.jsonc
