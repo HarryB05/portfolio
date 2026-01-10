@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { Github } from "lucide-react";
+import { Github, Package } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import LinkedInIcon from "@/components/LinkedInIcon";
@@ -44,6 +44,11 @@ export default function Home() {
       name: "LinkedIn",
       icon: LinkedInIcon,
       href: "https://www.linkedin.com/in/harry-barnish",
+    },
+    {
+      name: "NPM",
+      icon: Package,
+      href: "https://www.npmjs.com/~harryb05",
     },
   ];
 
