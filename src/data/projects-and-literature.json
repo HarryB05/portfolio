@@ -44,6 +44,26 @@
       ]
     },
     {
+      "id": "chronalog",
+      "title": "Chronalog",
+      "period": "2026 - Present",
+      "description": "A Git-backed changelog package for Next.js. Manage your changelog entries with a beautiful admin interface. Git-backed, no database, own your data. Features MDX support, customisable configuration, and automatic Git commits for all changes.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "MDX"],
+      "links": {
+        "website": "https://www.chronalog.dev",
+        "github": "https://github.com/HarryB05/chronalog",
+        "npm": "https://www.npmjs.com/package/chronalog"
+      },
+      "status": "current",
+      "carousel": [
+        {
+          "light": "/projects/chronalog/chronalog_light.jpeg",
+          "dark": "/projects/chronalog/chronalog_dark.jpeg",
+          "alt": "Chronalog Admin Interface"
+        }
+      ]
+    },
+    {
       "id": "estate-management",
       "title": "Estate Management System",
       "period": "04/2025",

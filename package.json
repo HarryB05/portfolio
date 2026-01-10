@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "lastUpdated": "2025-12-29",
+  "lastUpdated": "2026-01-10",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

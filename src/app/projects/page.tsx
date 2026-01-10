@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Play, Download } from "lucide-react";
+import { Github, ExternalLink, Play, Download, Package } from "lucide-react";
 import { useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -26,6 +26,7 @@ interface Project {
     website?: string;
     play?: string;
     pdf?: string;
+    npm?: string;
   };
   status: "current" | "past";
   image?: string;
@@ -213,6 +214,17 @@ export default function Projects() {
                   <Download className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
               </>
+            )}
+            {project.links.npm && (
+              <a
+                href={project.links.npm}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>View on NPM</span>
+                <Package className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
             )}
           </div>
         )}
