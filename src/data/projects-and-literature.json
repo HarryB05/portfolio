@@ -46,7 +46,7 @@
     {
       "id": "chronalog",
       "title": "Chronalog",
-      "period": "2026 - Present",
+      "period": "01/2026 - Present",
       "description": "A Git-backed changelog package for Next.js. Manage your changelog entries with a beautiful admin interface. Git-backed, no database, own your data. Features MDX support, customisable configuration, and automatic Git commits for all changes.",
       "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "MDX"],
       "links": {
