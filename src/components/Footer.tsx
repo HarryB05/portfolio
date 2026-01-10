@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { Github, Package } from "lucide-react";
 import LinkedInIcon from "./LinkedInIcon";
 import packageJson from "../../package.json";
 
@@ -13,6 +13,11 @@ export default function Footer() {
       name: "LinkedIn",
       icon: LinkedInIcon,
       href: "https://www.linkedin.com/in/harry-barnish",
+    },
+    {
+      name: "NPM",
+      icon: Package,
+      href: "https://www.npmjs.com/~harryb05",
     },
   ];
 
