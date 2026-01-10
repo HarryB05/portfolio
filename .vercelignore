@@ -1,0 +1,22 @@
+# Lock files (Vercel only needs one)
+package-lock.json
+pnpm-lock.yaml
+
+# Development files
+scripts/
+*.md
+!README.md
+wrangler.jsonc
+changelog.config.ts
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts (Vercel builds these)
+.next/
+out/
+dist/
+build/
