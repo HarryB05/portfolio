@@ -139,7 +139,13 @@
         "github": "https://github.com/HarryB05/lucidtrack-extension",
         "chrome": "https://chromewebstore.google.com/detail/lucidtrack/jmffecdllifdjjeakkibcmoaacbjjagf"
       },
-      "status": "past"
+      "status": "past",
+      "collaborators": [
+        {
+          "name": "Bernard Lee",
+          "github": "https://bernardlee.co.uk"
+        }
+      ]
     },
     {
       "id": "job-data-cleanser",
@@ -152,6 +158,12 @@
         "paper": "/literature#record-linkage"
       },
       "status": "past",
+      "collaborators": [
+        {
+          "name": "Bernard Lee",
+          "github": "https://bernardlee.co.uk"
+        }
+      ],
       "carousel": [
         {
           "light": "/projects/job-data-cleanser/Job-Data-Cleanser_light.jpeg",
