@@ -1,4 +1,5 @@
 import { Github, Package } from "lucide-react";
+import Link from "next/link";
 import LinkedInIcon from "./LinkedInIcon";
 import packageJson from "../../package.json";
 
@@ -55,11 +56,20 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        {lastUpdated && (
-          <p className="text-foreground/50 text-xs font-merriweather">
-            Last updated: {lastUpdated}
-          </p>
-        )}
+        <div className="flex justify-center items-center gap-3 flex-wrap">
+          {lastUpdated && (
+            <p className="text-foreground/50 text-xs font-merriweather">
+              Last updated: {lastUpdated}
+            </p>
+          )}
+          <Link
+            href="/changelog"
+            className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20 hover:border-primary/50 dark:bg-primary/20 dark:text-primary dark:hover:bg-primary/30"
+            title="View changelog"
+          >
+            v{packageJson.version}
+          </Link>
+        </div>
       </div>
     </footer>
   );

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { GET as getChangelogList } from "../api/changelog/list/route";
 import { ChangelogTimeline } from "./ChangelogTimeline";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // Force dynamic rendering since we fetch data at request time
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Changelog",
-  description: "View all updates, features, and improvements. Stay up to date with the latest changes and releases.",
+  title: "Changelog - Powered by Chronalog",
+  description: "Track updates and improvements to my portfolio. This changelog is powered by Chronalog, a changelog management system I built.",
   openGraph: {
-    title: "Changelog",
-    description: "View all updates, features, and improvements. Stay up to date with the latest changes and releases.",
+    title: "Changelog - Powered by Chronalog",
+    description: "Track updates and improvements to my portfolio. This changelog is powered by Chronalog, a changelog management system I built.",
     url: "/changelog",
   },
   alternates: {
@@ -85,25 +87,34 @@ export default async function ChangelogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="flex min-h-screen flex-col bg-white dark:bg-black">
-        <main className="mx-auto w-full max-w-4xl px-6 py-12">
-          <div className="mb-12">
-            <h1 className="mb-4 text-4xl font-bold text-black dark:text-zinc-50 sm:text-5xl">
-              Changelog
-            </h1>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              Stay up to date with the latest updates, features, and improvements.
-            </p>
-          </div>
+      <div className="min-h-screen bg-background">
+        <Navbar />
 
-          {error && (
-            <div className="mb-8 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/20">
-              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+        <main className="pt-20 sm:pt-24 px-4 sm:px-6 pb-16 sm:pb-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground font-playfair">
+                Changelog
+              </h1>
+              <p className="text-lg sm:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed font-merriweather px-4 mb-3">
+                Track updates and improvements to my portfolio.
+              </p>
+              <p className="text-sm text-foreground/50 max-w-3xl mx-auto font-merriweather px-4">
+                This changelog is powered by <a href="https://www.chronalog.dev" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary transition-colors underline decoration-1 underline-offset-2">Chronalog</a>, a changelog management Next.js package I built.
+              </p>
             </div>
-          )}
 
-          {!error && <ChangelogTimeline entries={entries} />}
+            {error && (
+              <div className="mb-8 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/20">
+                <p className="text-sm text-red-600 dark:text-red-400 font-merriweather">{error}</p>
+              </div>
+            )}
+
+            {!error && <ChangelogTimeline entries={entries} />}
+          </div>
         </main>
+
+        <Footer />
       </div>
     </>
   );

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play, Download, Package } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -27,6 +27,7 @@ interface Project {
     play?: string;
     pdf?: string;
     npm?: string;
+    demo?: string;
   };
   status: "current" | "past";
   image?: string;
@@ -80,25 +81,45 @@ export default function Projects() {
     },
   };
 
-  const ProjectCard = ({ project }: { project: Project }) => (
-    <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden">
-      {(project.image || project.carousel) && (
-        <div className="mb-4">
-          {project.carousel ? (
-            <ImageCarousel images={project.carousel} />
-          ) : project.image ? (
-            <div className="relative aspect-[3/2] overflow-hidden rounded-t-lg bg-muted">
-              <Image
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                fill
-                className="object-cover rounded-t-lg"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  const ProjectCard = ({ project }: { project: Project }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageError, setImageError] = useState(false);
+
+    return (
+      <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden">
+        {(project.image || project.carousel) && (
+          <div className="mb-4">
+            {project.carousel ? (
+              <ImageCarousel 
+                images={project.carousel} 
               />
-            </div>
-          ) : null}
-        </div>
-      )}
+            ) : project.image ? (
+              <div 
+                className="relative aspect-[3/2] overflow-hidden rounded-t-lg bg-muted"
+              >
+                {/* Loading skeleton */}
+                {!imageLoaded && !imageError && (
+                  <div className="absolute inset-0 bg-muted animate-pulse rounded-t-lg" />
+                )}
+                
+                {/* Image */}
+                <Image
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  className={`object-cover rounded-t-lg transition-all duration-500 ${
+                    imageLoaded 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-105'
+                  } hover:scale-105`}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => setImageError(true)}
+                />
+              </div>
+            ) : null}
+          </div>
+        )}
       
       <div className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 space-y-2 sm:space-y-0">
@@ -226,11 +247,21 @@ export default function Projects() {
                 <Package className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
               </a>
             )}
+            {project.links.demo && (
+              <a
+                href={project.links.demo}
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>View Demo</span>
+                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
           </div>
         )}
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">

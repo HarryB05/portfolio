@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -17,7 +17,7 @@ interface ImageCarouselProps {
   className?: string;
 }
 
-export function ImageCarousel({ images, className = "" }: ImageCarouselProps) {
+export const ImageCarousel = memo(function ImageCarousel({ images, className = "" }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [imageTransitioning, setImageTransitioning] = useState(false);
@@ -126,7 +126,7 @@ export function ImageCarousel({ images, className = "" }: ImageCarouselProps) {
                 src={currentSrc}
                 alt={currentImage.alt}
                 fill
-                className={`object-cover rounded-t-lg transition-opacity duration-150 ${
+                className={`object-cover rounded-t-lg transition-all duration-300 ${
                   isImageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 priority={currentIndex === 0}
@@ -189,4 +189,4 @@ export function ImageCarousel({ images, className = "" }: ImageCarouselProps) {
       )}
     </div>
   );
-}
+});

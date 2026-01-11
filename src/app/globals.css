@@ -118,3 +118,13 @@ button, a, .interactive {
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
 }
+
+/* Hide scrollbar but maintain scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}

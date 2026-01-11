@@ -1,8 +1,8 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "private": true,
-  "lastUpdated": "2026-01-10",
+  "lastUpdated": "2026-01-11",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -19,7 +19,8 @@
     "next": "16.1.1",
     "next-themes": "^0.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",

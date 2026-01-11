@@ -63,12 +63,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth preload">
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              document.documentElement.classList.add('preload');
               window.addEventListener('load', function() {
                 document.documentElement.classList.remove('preload');
               });

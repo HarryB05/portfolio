@@ -52,7 +52,8 @@
       "links": {
         "website": "https://www.chronalog.dev",
         "github": "https://github.com/HarryB05/chronalog",
-        "npm": "https://www.npmjs.com/package/chronalog"
+        "npm": "https://www.npmjs.com/package/chronalog",
+        "demo": "/changelog"
       },
       "status": "current",
       "carousel": [
@@ -155,7 +156,7 @@
       "description": "Designed and implemented a Java-based Horse Race Simulator. Featured multithreaded race execution for parallel processing and performance. Incorporated dynamic event handling to address real-time race conditions.",
       "technologies": ["Java", "Swing"],
       "links": {
-        "github": "https://github.com/HarryB05/horse-racing-simulator"
+        "github": "https://github.com/HarryB05/ECS414U-Object-Oriented-Programming"
       },
       "status": "past"
     },

@@ -126,12 +126,12 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
 
   if (entries.length === 0) {
     return (
-      <div className="mb-12 rounded-lg border border-zinc-200 bg-zinc-50 p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
-        <FileText className="mx-auto mb-4 h-12 w-12 text-zinc-400 dark:text-zinc-600" />
-        <h2 className="mb-2 text-xl font-semibold text-black dark:text-zinc-50">
+      <div className="mb-12 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-12 text-center">
+        <FileText className="mx-auto mb-4 h-12 w-12 text-foreground/40" />
+        <h2 className="mb-2 text-xl font-semibold text-foreground font-playfair">
           No changelog entries yet
         </h2>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-foreground/60 font-merriweather">
           Changelog entries will appear here once they're created.
         </p>
       </div>
@@ -144,7 +144,7 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
       {uniqueVersions.length > 0 && (
         <div className="mb-8 space-y-4">
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+            <h3 className="mb-3 text-sm font-semibold text-foreground font-merriweather">
               Filter by Major Version
             </h3>
             <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
@@ -153,10 +153,10 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                   setSelectedMajorVersion(null);
                   setSelectedMinorVersion(null);
                 }}
-                className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors font-merriweather ${
                   selectedMajorVersion === null
-                    ? "border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/30 dark:text-blue-300"
-                    : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                    ? "border-primary bg-primary/20 text-primary"
+                    : "border-border/50 bg-card/50 text-foreground/70 hover:bg-card hover:border-primary/30"
                 }`}
               >
                 All Versions
@@ -169,10 +169,10 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                       setSelectedMajorVersion(version);
                       setSelectedMinorVersion(null);
                     }}
-                    className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors font-merriweather ${
                       selectedMajorVersion === version
-                        ? "border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/30 dark:text-blue-300"
-                        : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                        ? "border-primary bg-primary/20 text-primary"
+                        : "border-border/50 bg-card/50 text-foreground/70 hover:bg-card hover:border-primary/30"
                     }`}
                   >
                     v{version}
@@ -185,16 +185,16 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
           {/* Minor Version Selector - only show when major version is selected */}
           {selectedMajorVersion && minorVersions.length > 0 && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+              <h3 className="mb-3 text-sm font-semibold text-foreground font-merriweather">
                 Filter by Minor Version
               </h3>
               <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
                 <button
                   onClick={() => setSelectedMinorVersion(null)}
-                  className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                  className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors font-merriweather ${
                     selectedMinorVersion === null
-                      ? "border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/30 dark:text-blue-300"
-                      : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                      ? "border-primary bg-primary/20 text-primary"
+                      : "border-border/50 bg-card/50 text-foreground/70 hover:bg-card hover:border-primary/30"
                   }`}
                 >
                   All {selectedMajorVersion.split(".")[0]}.x.x
@@ -204,10 +204,10 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                     <button
                       key={version}
                       onClick={() => setSelectedMinorVersion(version)}
-                      className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                      className={`shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors font-merriweather ${
                         selectedMinorVersion === version
-                          ? "border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900/30 dark:text-blue-300"
-                          : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                          ? "border-primary bg-primary/20 text-primary"
+                          : "border-border/50 bg-card/50 text-foreground/70 hover:bg-card hover:border-primary/30"
                       }`}
                     >
                       v{version}
@@ -222,8 +222,8 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
 
       {/* Timeline */}
       {filteredEntries.length === 0 ? (
-        <div className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+        <div className="rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-6">
+          <p className="text-sm text-foreground/60 font-merriweather">
             No entries found for the selected filter.
           </p>
         </div>
@@ -233,32 +233,44 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
             const isLatest = entries.length > 0 && entry.slug === entries[0].slug;
             return (
               <div key={entry.slug} className="relative">
-                {/* Timeline line */}
+                {/* Timeline line connecting circles */}
                 {index < filteredEntries.length - 1 && (
-                  <div className="absolute left-[15px] top-8 h-full w-0.5 bg-zinc-200 dark:bg-zinc-800" />
+                  <div className="absolute left-4 top-8 h-full w-0.5 bg-primary/30 z-0" />
                 )}
 
                 <div className="relative flex gap-4">
                   {/* Date circle */}
-                  <div className={`relative z-0 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 ${isLatest ? "border-blue-500 bg-blue-100 dark:border-blue-400 dark:bg-blue-900/30" : "border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"}`}>
-                    <div className={`h-2 w-2 rounded-full ${isLatest ? "bg-blue-600 dark:bg-blue-400" : "bg-zinc-400 dark:bg-zinc-600"}`} />
+                  <div className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 ${
+                    isLatest 
+                      ? "border-primary bg-primary/20" 
+                      : "border-border/50 bg-card/50"
+                  }`}>
+                    <div className={`h-2 w-2 rounded-full ${
+                      isLatest ? "bg-primary" : "bg-foreground/40"
+                    }`} />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 space-y-2 pb-8">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                      <span className="text-xs font-medium text-foreground/60 font-merriweather">
                         {formatDate(entry.date)}
                       </span>
                       {entry.version && (
-                        <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${isLatest ? "bg-blue-200 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200" : "bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-xs font-semibold font-merriweather ${
+                          isLatest 
+                            ? "bg-primary/20 text-primary" 
+                            : "bg-card/50 text-foreground/70 border border-border/50"
+                        }`}>
                           {entry.version}
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className={`flex-1 text-lg font-semibold ${isLatest ? "text-blue-900 dark:text-blue-100" : "text-zinc-900 dark:text-zinc-50"}`}>
+                      <h3 className={`flex-1 text-lg font-semibold font-playfair ${
+                        isLatest ? "text-primary" : "text-foreground"
+                      }`}>
                         {entry.title}
                       </h3>
                     </div>
@@ -268,7 +280,7 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                         {entry.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
+                            className="rounded-md bg-card/50 px-2 py-0.5 text-xs font-medium text-foreground/70 border border-border/50 font-merriweather"
                           >
                             {tag}
                           </span>
@@ -278,13 +290,13 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
 
                     {entry.features && entry.features.length > 0 && (
                       <div className="space-y-1">
-                        <h4 className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                        <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/60 font-merriweather">
                           Features
                         </h4>
-                        <ul className="space-y-1 text-sm text-zinc-700 dark:text-zinc-300">
+                        <ul className="space-y-1 text-sm text-foreground/80 font-merriweather">
                           {entry.features.map((feature, featureIndex) => (
                             <li key={featureIndex} className="flex items-center gap-2">
-                              <span className="text-2xl leading-none text-green-600 dark:text-green-400">•</span>
+                              <span className="text-2xl leading-none text-primary">•</span>
                               <span>{feature}</span>
                             </li>
                           ))}
@@ -294,13 +306,13 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
 
                     {entry.bugfixes && entry.bugfixes.length > 0 && (
                       <div className="space-y-1">
-                        <h4 className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                        <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/60 font-merriweather">
                           Bug Fixes
                         </h4>
-                        <ul className="space-y-1 text-sm text-zinc-700 dark:text-zinc-300">
+                        <ul className="space-y-1 text-sm text-foreground/80 font-merriweather">
                           {entry.bugfixes.map((bugfix, bugfixIndex) => (
                             <li key={bugfixIndex} className="flex items-center gap-2">
-                              <span className="text-2xl leading-none text-red-600 dark:text-red-400">•</span>
+                              <span className="text-2xl leading-none text-accent">•</span>
                               <span>{bugfix}</span>
                             </li>
                           ))}
@@ -309,22 +321,22 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                     )}
 
                     {entry.body && (
-                      <div className="mt-4 space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+                      <div className="mt-4 space-y-2 text-sm text-foreground/80 font-merriweather">
                         <ReactMarkdown
                           components={{
                             p: ({ children }: { children?: React.ReactNode }) => <p className="mb-2">{children}</p>,
-                            h1: ({ children }: { children?: React.ReactNode }) => <h1 className="mb-2 text-lg font-semibold text-zinc-900 dark:text-zinc-50">{children}</h1>,
-                            h2: ({ children }: { children?: React.ReactNode }) => <h2 className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50">{children}</h2>,
-                            h3: ({ children }: { children?: React.ReactNode }) => <h3 className="mb-1 text-sm font-semibold text-zinc-900 dark:text-zinc-50">{children}</h3>,
+                            h1: ({ children }: { children?: React.ReactNode }) => <h1 className="mb-2 text-lg font-semibold text-foreground font-playfair">{children}</h1>,
+                            h2: ({ children }: { children?: React.ReactNode }) => <h2 className="mb-2 text-base font-semibold text-foreground font-playfair">{children}</h2>,
+                            h3: ({ children }: { children?: React.ReactNode }) => <h3 className="mb-1 text-sm font-semibold text-foreground font-playfair">{children}</h3>,
                             ul: ({ children }: { children?: React.ReactNode }) => <ul className="ml-4 list-disc space-y-1">{children}</ul>,
                             ol: ({ children }: { children?: React.ReactNode }) => <ol className="ml-4 list-decimal space-y-1">{children}</ol>,
                             li: ({ children }: { children?: React.ReactNode }) => <li>{children}</li>,
-                            strong: ({ children }: { children?: React.ReactNode }) => <strong className="font-semibold text-zinc-900 dark:text-zinc-50">{children}</strong>,
+                            strong: ({ children }: { children?: React.ReactNode }) => <strong className="font-semibold text-foreground">{children}</strong>,
                             em: ({ children }: { children?: React.ReactNode }) => <em className="italic">{children}</em>,
-                            code: ({ children }: { children?: React.ReactNode }) => <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">{children}</code>,
-                            pre: ({ children }: { children?: React.ReactNode }) => <pre className="overflow-x-auto rounded-lg bg-zinc-100 p-3 text-xs dark:bg-zinc-800">{children}</pre>,
-                            a: ({ href, children }: { href?: string; children?: React.ReactNode }) => <a href={href} className="text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">{children}</a>,
-                            blockquote: ({ children }: { children?: React.ReactNode }) => <blockquote className="border-l-2 border-zinc-300 pl-3 italic dark:border-zinc-700">{children}</blockquote>,
+                            code: ({ children }: { children?: React.ReactNode }) => <code className="rounded bg-card/50 px-1.5 py-0.5 font-mono text-xs border border-border/50">{children}</code>,
+                            pre: ({ children }: { children?: React.ReactNode }) => <pre className="overflow-x-auto rounded-lg bg-card/50 p-3 text-xs border border-border/50">{children}</pre>,
+                            a: ({ href, children }: { href?: string; children?: React.ReactNode }) => <a href={href} className="text-primary underline hover:text-primary/80">{children}</a>,
+                            blockquote: ({ children }: { children?: React.ReactNode }) => <blockquote className="border-l-2 border-border/50 pl-3 italic">{children}</blockquote>,
                             img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
                               // Normalise image paths
                               const { src, alt, ...rest } = props;
@@ -339,7 +351,7 @@ export function ChangelogTimeline({ entries }: ChangelogTimelineProps) {
                                   {...rest}
                                   src={imageSrc}
                                   alt={alt || ""}
-                                  className="my-4 max-w-full rounded-lg border border-zinc-200 dark:border-zinc-800"
+                                  className="my-4 max-w-full rounded-lg border border-border/50"
                                   onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     target.style.display = "none";
