@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Merriweather } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { PreloadHandler } from "@/components/PreloadHandler";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -63,21 +64,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth preload">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener('load', function() {
-                document.documentElement.classList.remove('preload');
-              });
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className="scroll-smooth preload" suppressHydrationWarning>
       <body
         className={`${playfair.variable} ${merriweather.variable} antialiased bg-background text-foreground`}
       >
+        <PreloadHandler />
         <ThemeProvider>
           {children}
         </ThemeProvider>
