@@ -151,7 +151,14 @@
         "github": "https://github.com/HarryB05/job-data-cleanser",
         "paper": "/literature#record-linkage"
       },
-      "status": "past"
+      "status": "past",
+      "carousel": [
+        {
+          "light": "/projects/job-data-cleanser/Job-Data-Cleanser_light.jpeg",
+          "dark": "/projects/job-data-cleanser/Job-Data-Cleanser_dark.jpeg",
+          "alt": "Job Data Cleanser Dashboard"
+        }
+      ]
     },
     {
       "id": "merkle-tree",
