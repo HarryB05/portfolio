@@ -107,7 +107,7 @@
       "description": "A web application for tracking university grades across different modules and calculating weighted averages. Features include semester and year breakdowns, module grade tracking, and comprehensive statistics.",
       "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       "links": {
-        "github": "https://github.com/HarryB05/grades-trackr"
+        "github": "https://github.com/HarryB05/grades_trackr"
       },
       "status": "past",
       "carousel": [
@@ -117,6 +117,41 @@
           "alt": "University Grades Tracker Dashboard"
         }
       ]
+    },
+    {
+      "id": "n-body",
+      "title": "N-Body Simulation",
+      "period": "12/2025",
+      "description": "Python package implementing gravitational n-body simulation with computational complexity optimisation. Developed direct O(n²) force calculation and Barnes-Hut algorithm implementation achieving O(n log n) complexity via quadtree spatial partitioning. Implemented custom quadtree data structure (Gadget) with recursive spatial decomposition for efficient force approximation. Designed modular package architecture with separate simulation classes, custom stack data structure, and physics-based body representation. Features animated visualisation of multi-body gravitational interactions with configurable time steps and astronomical unit scaling.",
+      "technologies": ["Python", "Jupyter Notebook"],
+      "links": {
+        "github": "https://github.com/HarryB05/n-body"
+      },
+      "status": "past"
+    },
+    {
+      "id": "lucidtrack-extension",
+      "title": "LucidTrack Browser Extension",
+      "period": "11/2025",
+      "description": "Browser extensions for LucidTrack enabling seamless job application tracking from job posting sites. Built Chrome extension utilising chrome.identity API for native OAuth authentication flow. Currently developing Safari Web Extension with tab-based OAuth redirect flow using Supabase callback handling due to Safari's lack of chrome.identity API support. Implemented manifest.json adaptation layer removing Chrome-specific permissions (identity, oauth2) for Safari compatibility whilst maintaining feature parity. Built automated build system with pnpm supporting both extension targets. Developed token extraction and authentication state management across browser contexts with automatic tab closure after successful OAuth completion.",
+      "technologies": ["TypeScript", "Web Extensions API", "OAuth2", "Safari Web Extensions", "Chrome Extensions"],
+      "links": {
+        "github": "https://github.com/HarryB05/lucidtrack-extension",
+        "chrome": "https://chromewebstore.google.com/detail/lucidtrack/jmffecdllifdjjeakkibcmoaacbjjagf"
+      },
+      "status": "past"
+    },
+    {
+      "id": "job-data-cleanser",
+      "title": "Job Data Cleanser",
+      "period": "10/2025",
+      "description": "Full-stack data cleansing application for normalising and deduplicating job application records. Built FastAPI backend with dual matching algorithms: RapidFuzz-based fuzzy string matching and sentence transformer embeddings for semantic similarity. Implemented composite embeddings matcher combining company name, position, and URL features for duplicate application detection. Architected entity assignment system linking companies to canonical entities with batch processing and transaction management. Developed URL cleansing pipeline normalising application links. Built Next.js 16 frontend with React Context state management and modular tab-based UI. Integrated Supabase for database operations with RPC functions for complex queries. Designed configurable threshold-based matching with real-time preview and export functionality.",
+      "technologies": ["Python", "FastAPI", "Next.js", "TypeScript", "Supabase", "Sentence Transformers", "scikit-learn", "RapidFuzz"],
+      "links": {
+        "github": "https://github.com/HarryB05/job-data-cleanser",
+        "paper": "/literature#record-linkage"
+      },
+      "status": "past"
     },
     {
       "id": "merkle-tree",
@@ -135,6 +170,14 @@
       "period": "09/2024 - 08/2025",
       "description": "Asynchronus python application to coordinate communication between ESP32s, Dashboard, FSM (Finite State Machine). Non-blocking architechture with priortiy-based messaging from API calls.",
       "technologies": ["Python", "FastAPI"],
+      "status": "past"
+    },
+    {
+      "id": "esp32-propulsion-firmware",
+      "title": "ESP32 Propulsion Firmware",
+      "period": "10/2024 - 08/2025",
+      "description": "Real-time embedded firmware for ESP32 propulsion control utilising dual-core architecture with FreeRTOS task separation. Designed modular submodule architecture with interface-based abstraction (dependency inversion) to decouple sensor management from communication layers. Implemented non-blocking inter-core communication via FreeRTOS queues, preventing sensor data loss during high-frequency command processing. Built automated build system with Arduino CLI for dependency management and recursive submodule handling. Developed JSON-based command protocol with ESP ID validation and ACK messaging. Architected sensor abstraction layer supporting configurable polling intervals and extensible sensor implementations.",
+      "technologies": ["ESP32", "Arduino", "C++", "FreeRTOS"],
       "status": "past"
     },
     {
@@ -173,6 +216,17 @@
     }
   ],
   "literature": [
+    {
+      "id": "cv-cover-letter-guide",
+      "title": "How to write a killer CV and Cover Letter for initial submissions",
+      "date": "01/2026",
+      "description": "A comprehensive guide to writing CVs and cover letters that pass ATS (Applicant Tracking Software) screening. Covers the structure and content of effective CVs, the three-paragraph framework for cover letters (Why me?, Why the company?, Why the role?), and strategies for standing out in competitive application processes. Includes practical tips on using quantitative metrics, tailoring applications, and leveraging networking events and insight days.",
+      "type": "blog",
+      "tags": ["Career Advice", "CV Writing", "Cover Letters", "Job Applications", "ATS"],
+      "links": {
+        "website": "https://lucidtrack.dev/blog/a-guide-to-writing-a-cv-and-cover-letter-for-initial-submissions"
+      }
+    },
     {
       "id": "record-linkage",
       "title": "Record Linkage and Entity Resolution",

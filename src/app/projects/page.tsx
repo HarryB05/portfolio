@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Play, Download, Package } from "lucide-react";
+import { Github, ExternalLink, Play, Download, Package, Chrome, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
@@ -28,6 +28,8 @@ interface Project {
     pdf?: string;
     npm?: string;
     demo?: string;
+    chrome?: string;
+    paper?: string;
   };
   status: "current" | "past";
   image?: string;
@@ -254,6 +256,26 @@ export default function Projects() {
               >
                 <span>View Demo</span>
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
+            {project.links.chrome && (
+              <a
+                href={project.links.chrome}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>Chrome Web Store</span>
+                <Chrome className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+              </a>
+            )}
+            {project.links.paper && (
+              <a
+                href={project.links.paper}
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+              >
+                <span>View Paper</span>
+                <FileText className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
               </a>
             )}
           </div>
