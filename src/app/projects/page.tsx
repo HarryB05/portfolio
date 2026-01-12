@@ -47,6 +47,18 @@ export default function Projects() {
     document.title = "Harry Barnish - Projects";
   }, []);
 
+  const formatDownloads = (num: number): string => {
+    if (num >= 1000000) {
+      const millions = num / 1000000;
+      return millions % 1 === 0 ? `${millions}M` : `${millions.toFixed(1)}M`;
+    }
+    if (num >= 1000) {
+      const thousands = num / 1000;
+      return thousands % 1 === 0 ? `${thousands}k` : `${thousands.toFixed(1)}k`;
+    }
+    return num.toString();
+  };
+
   useEffect(() => {
     // Fetch npm download counts for packages
     const fetchNpmDownloads = async () => {
@@ -311,7 +323,7 @@ export default function Projects() {
               <div className="mt-2">
                 <span className="inline-flex items-center text-foreground/50 font-merriweather text-xs">
                   <Download className="w-3 h-3 mr-1" />
-                  <span>{downloads.toLocaleString()} downloads</span>
+                  <span>{formatDownloads(downloads)} downloads</span>
                 </span>
               </div>
             )}
