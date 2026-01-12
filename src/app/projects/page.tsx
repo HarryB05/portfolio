@@ -41,8 +41,31 @@ interface Project {
 }
 
 export default function Projects() {
+  const [npmDownloads, setNpmDownloads] = useState<Record<string, number>>({});
+
   useEffect(() => {
     document.title = "Harry Barnish - Projects";
+  }, []);
+
+  useEffect(() => {
+    // Fetch npm download counts for packages
+    const fetchNpmDownloads = async () => {
+      const packageNames = ['chronalog']; // Add more packages here if needed
+
+      for (const packageName of packageNames) {
+        try {
+          const response = await fetch(`/api/npm-downloads?package=${packageName}`);
+          if (response.ok) {
+            const data = await response.json();
+            setNpmDownloads(prev => ({ ...prev, [packageName]: data.downloads }));
+          }
+        } catch (error) {
+          console.error(`Failed to fetch downloads for ${packageName}:`, error);
+        }
+      }
+    };
+
+    fetchNpmDownloads();
   }, []);
 
   const projects: Project[] = projectsAndLiteratureData.projects as Project[];
@@ -86,6 +109,10 @@ export default function Projects() {
   const ProjectCard = ({ project }: { project: Project }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [imageError, setImageError] = useState(false);
+
+    // Extract package name from npm link if it exists
+    const npmPackageName = project.links?.npm ? project.links.npm.split('/package/')[1] : null;
+    const downloads = npmPackageName ? npmDownloads[npmPackageName] : null;
 
     return (
       <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden">
@@ -181,102 +208,112 @@ export default function Projects() {
         </div>
         
         {project.links && (
-          <div className="flex flex-wrap gap-3 sm:gap-4">
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>View Code</span>
-                <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.website && (
-              <a
-                href={project.links.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>Visit Website</span>
-                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.play && (
-              <a
-                href={project.links.play}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>Play Game</span>
-                <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.pdf && (
-              <>
+          <div>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              {project.links.github && (
                 <a
-                  href={project.links.pdf}
+                  href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
                 >
-                  <span>View PDF</span>
+                  <span>View Code</span>
+                  <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              )}
+              {project.links.website && (
+                <a
+                  href={project.links.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>Visit Website</span>
                   <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
+              )}
+              {project.links.play && (
                 <a
-                  href={project.links.pdf}
+                  href={project.links.play}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download
                   className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
                 >
-                  <span>Download PDF</span>
-                  <Download className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  <span>Play Game</span>
+                  <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
-              </>
-            )}
-            {project.links.npm && (
-              <a
-                href={project.links.npm}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>View on NPM</span>
-                <Package className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.demo && (
-              <a
-                href={project.links.demo}
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>View Demo</span>
-                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.chrome && (
-              <a
-                href={project.links.chrome}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>Chrome Web Store</span>
-                <Chrome className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
-            )}
-            {project.links.paper && (
-              <a
-                href={project.links.paper}
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
-              >
-                <span>View Paper</span>
-                <FileText className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-              </a>
+              )}
+              {project.links.pdf && (
+                <>
+                  <a
+                    href={project.links.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                  >
+                    <span>View PDF</span>
+                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  </a>
+                  <a
+                    href={project.links.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                  >
+                    <span>Download PDF</span>
+                    <Download className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  </a>
+                </>
+              )}
+              {project.links.npm && (
+                <a
+                  href={project.links.npm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>View on NPM</span>
+                  <Package className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              )}
+              {project.links.demo && (
+                <a
+                  href={project.links.demo}
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>View Demo</span>
+                  <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              )}
+              {project.links.chrome && (
+                <a
+                  href={project.links.chrome}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>Chrome Web Store</span>
+                  <Chrome className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              )}
+              {project.links.paper && (
+                <a
+                  href={project.links.paper}
+                  className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
+                >
+                  <span>View Paper</span>
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                </a>
+              )}
+            </div>
+            {downloads !== null && downloads !== undefined && (
+              <div className="mt-2">
+                <span className="inline-flex items-center text-foreground/50 font-merriweather text-xs">
+                  <Download className="w-3 h-3 mr-1" />
+                  <span>{downloads.toLocaleString()} downloads</span>
+                </span>
+              </div>
             )}
           </div>
         )}
