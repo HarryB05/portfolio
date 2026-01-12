@@ -39,10 +39,10 @@ export default function TechStack() {
     return Math.max(1, currentYear - start);
   };
 
-  // Calculate progress percentage (max 8 years = 100%)
-  const calculateProgress = (years: number): number => {
-    const maxYears = 8;
-    return Math.min(100, (years / maxYears) * 100);
+  // Calculate progress percentage based on max years in the category
+  const calculateProgress = (years: number, maxYearsInCategory: number): number => {
+    if (maxYearsInCategory === 0) return 0;
+    return Math.min(100, (years / maxYearsInCategory) * 100);
   };
 
   // Format years text
@@ -168,10 +168,16 @@ export default function TechStack() {
 
                 {/* Tech Items List with Progress Bars */}
                 <div className="space-y-4 sm:space-y-5">
-                  {category.items.map((item, itemIndex) => {
-                    const years = calculateYears(item.years);
-                    const progress = calculateProgress(years);
-                    const yearsText = formatYears(years);
+                  {(() => {
+                    // Calculate max years for this category
+                    const maxYearsInCategory = Math.max(
+                      ...category.items.map((item) => calculateYears(item.years))
+                    );
+
+                    return category.items.map((item, itemIndex) => {
+                      const years = calculateYears(item.years);
+                      const progress = calculateProgress(years, maxYearsInCategory);
+                      const yearsText = formatYears(years);
 
                     return (
                       <motion.div
@@ -210,7 +216,8 @@ export default function TechStack() {
                         </div>
                       </motion.div>
                     );
-                  })}
+                  });
+                  })()}
                 </div>
               </motion.div>
             ))}
