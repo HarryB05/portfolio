@@ -12,8 +12,8 @@ importers:
         specifier: ^14.2.15
         version: 14.2.15(next@16.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       chronalog:
-        specifier: ^0.2.3
-        version: 0.2.3(@floating-ui/dom@1.7.4)(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/extensions@3.15.3(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(graphql@16.12.0)(next@16.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18)
+        specifier: ^0.2.4
+        version: 0.2.4(@floating-ui/dom@1.7.4)(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/extensions@3.15.3(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(graphql@16.12.0)(next@16.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18)
       framer-motion:
         specifier: ^12.25.0
         version: 12.25.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1594,8 +1594,8 @@ packages:
   character-reference-invalid@2.0.1:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
 
-  chronalog@0.2.3:
-    resolution: {integrity: sha512-/iLnfuzCRtwTJXz1AwS8FMELl//rWq/3m7TQv/GTQ/Ta/vZ7p0MH1s5Sxs/qb/sRA/qX1SVpV89n6t7cJRh89A==}
+  chronalog@0.2.4:
+    resolution: {integrity: sha512-6gJBOkWC9p/gqem4gFpsnXFq8I/B69EvFXNqLBUngblLrTmW2e0b/idzdOHkRivxlpOIwB38SKCVzEs9jL/y7w==}
     hasBin: true
     peerDependencies:
       next: ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -4542,7 +4542,7 @@ snapshots:
 
   character-reference-invalid@2.0.1: {}
 
-  chronalog@0.2.3(@floating-ui/dom@1.7.4)(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/extensions@3.15.3(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(graphql@16.12.0)(next@16.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18):
+  chronalog@0.2.4(@floating-ui/dom@1.7.4)(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/extensions@3.15.3(@tiptap/core@3.15.3(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3))(@tiptap/pm@3.15.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(graphql@16.12.0)(next@16.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18):
     dependencies:
       '@radix-ui/react-popover': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tanstack/react-query': 5.90.16(react@19.1.0)

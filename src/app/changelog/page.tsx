@@ -4,8 +4,9 @@ import { ChangelogTimeline } from "./ChangelogTimeline";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Force dynamic rendering since we fetch data at request time
-export const dynamic = 'force-dynamic';
+// Use ISR (Incremental Static Regeneration) for better performance
+// Revalidate every 5 minutes to keep content fresh
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Changelog - Powered by Chronalog",
