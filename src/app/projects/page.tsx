@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Play, Download, Package, Chrome, FileText } from "lucide-react";
+import { ExternalLink, Play, Download, Chrome, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import GitHubIcon from "@/components/GitHubIcon";
+import NPMIcon from "@/components/NPMIcon";
 import projectsAndLiteratureData from "@/data/projects-and-literature.json";
 
 interface CarouselImage {
@@ -230,7 +232,7 @@ export default function Projects() {
                   className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
                 >
                   <span>View Code</span>
-                  <Github className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  <GitHubIcon className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
               )}
               {project.links.website && (
@@ -286,7 +288,7 @@ export default function Projects() {
                   className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-merriweather text-sm sm:text-base"
                 >
                   <span>View on NPM</span>
-                  <Package className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  <NPMIcon className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
               )}
               {project.links.demo && (

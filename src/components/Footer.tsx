@@ -1,13 +1,14 @@
-import { Github, Package } from "lucide-react";
 import Link from "next/link";
 import LinkedInIcon from "./LinkedInIcon";
+import GitHubIcon from "./GitHubIcon";
+import NPMIcon from "./NPMIcon";
 import packageJson from "../../package.json";
 
 export default function Footer() {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: Github,
+      icon: GitHubIcon,
       href: "https://github.com/HarryB05",
     },
     {
@@ -17,7 +18,7 @@ export default function Footer() {
     },
     {
       name: "NPM",
-      icon: Package,
+      icon: NPMIcon,
       href: "https://www.npmjs.com/~harryb05",
     },
   ];

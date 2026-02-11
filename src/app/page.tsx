@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { Github, Package } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import LinkedInIcon from "@/components/LinkedInIcon";
+import GitHubIcon from "@/components/GitHubIcon";
+import NPMIcon from "@/components/NPMIcon";
 
 export default function Home() {
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function Home() {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: Github,
+      icon: GitHubIcon,
       href: "https://github.com/HarryB05",
     },
     {
@@ -47,7 +48,7 @@ export default function Home() {
     },
     {
       name: "NPM",
-      icon: Package,
+      icon: NPMIcon,
       href: "https://www.npmjs.com/~harryb05",
     },
   ];
@@ -75,7 +76,24 @@ export default function Home() {
             <motion.p
               className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed font-merriweather"
             >
-              Computer Science and Management student at Queen Mary University of London, focused on software development, data systems, and technology-driven business solutions.
+              Computer Science student, software engineer and founder living in London. I spend most of my time building{" "}
+              <a
+                href="https://lucidtrack.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                LucidTrack
+              </a>
+              {" and "}
+              <a
+                href="https://www.chronalog.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                Chronalog
+              </a>
             </motion.p>
           </motion.div>
 
