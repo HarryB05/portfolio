@@ -65,6 +65,24 @@
       ]
     },
     {
+      "id": "supabase-schema-mcp",
+      "title": "Supabase Schema MCP",
+      "period": "02/2026",
+      "description": "A Python-based MCP server that gives AI tools safe, read-only access to fine-grained Supabase/Postgres schema metadata. It focuses purely on database structure: tables, columns, views, enums, RLS policies (and coverage), functions/RPC candidates, foreign keys, indexes, and triggers, so assistants can reason about migrations, audits, and relationship graphs without running arbitrary SQL.",
+      "technologies": ["Python", "MCP", "Supabase", "Postgres"],
+      "links": {
+        "github": "https://github.com/HarryB05/supabase-schema-mcp"
+      },
+      "status": "past",
+      "carousel": [
+        {
+          "light": "/projects/supabase-schema-mcp/MCP Inspector light.jpeg",
+          "dark": "/projects/supabase-schema-mcp/MCP Inspector dark.jpeg",
+          "alt": "Supabase Schema MCP in MCP Inspector"
+        }
+      ]
+    },
+    {
       "id": "estate-management",
       "title": "Estate Management System",
       "period": "04/2025",
