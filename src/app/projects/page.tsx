@@ -85,18 +85,34 @@ export default function Projects() {
   const projects: Project[] = projectsAndLiteratureData.projects as Project[];
 
   const currentProjects = projects.filter(p => p.status === "current");
+
+  // Group by start year: period "10/2024 - 08/2025" -> 2024
+  const getYearFromPeriod = (period: string): number => {
+    const startDate = period.split(" - ")[0];
+    const [, year] = startDate.split("/").map(Number);
+    return year ?? 0;
+  };
+
+  const getDateFromPeriod = (period: string): number => {
+    const startDate = period.split(" - ")[0];
+    const [month, year] = startDate.split("/").map(Number);
+    return year * 12 + month;
+  };
+
   const pastProjects = projects
     .filter(p => p.status === "past")
-    .sort((a, b) => {
-      // Extract the start date from period (format: "MM/YYYY" or "MM/YYYY - ...")
-      const getDateFromPeriod = (period: string): number => {
-        const startDate = period.split(" - ")[0]; // Get the first part before " - "
-        const [month, year] = startDate.split("/").map(Number);
-        return year * 12 + month; // Convert to a sortable number
-      };
-      
-      return getDateFromPeriod(b.period) - getDateFromPeriod(a.period); // Descending order (most recent first)
-    });
+    .sort((a, b) => getDateFromPeriod(b.period) - getDateFromPeriod(a.period));
+
+  const pastProjectsByYear = pastProjects.reduce<Record<number, Project[]>>((acc, project) => {
+    const year = getYearFromPeriod(project.period);
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(project);
+    return acc;
+  }, {});
+
+  const pastYears = Object.keys(pastProjectsByYear)
+    .map(Number)
+    .sort((a, b) => b - a);
 
   const containerVariants = {
     hidden: { opacity: 0.8 },
@@ -391,19 +407,29 @@ export default function Projects() {
                 </h2>
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/50 to-primary/30 rounded-full"></div>
               </div>
-              <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6">
-                {pastProjects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: (currentProjects.length * 0.1) + (index * 0.1) }}
-                    className="break-inside-avoid mb-4 sm:mb-6"
-                  >
-                    <ProjectCard project={project} />
-                  </motion.div>
-                ))}
-              </div>
+              {pastYears.map((year, yearIndex) => (
+                <div key={year} className="mb-10 last:mb-0">
+                  <h3 className="text-xl font-semibold text-foreground/90 font-playfair mb-3">
+                    {year}
+                  </h3>
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6">
+                    {pastProjectsByYear[year].map((project, index) => (
+                      <motion.div
+                        key={project.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: (currentProjects.length * 0.1) + (yearIndex * 0.05) + (index * 0.1),
+                        }}
+                        className="break-inside-avoid mb-4 sm:mb-6"
+                      >
+                        <ProjectCard project={project} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </motion.div>
           )}
         </motion.div>
